@@ -2,3 +2,4 @@
 composer.phar
 /vendor/**
 /config/sql_account.php
+/nbproject/private/

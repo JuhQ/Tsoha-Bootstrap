@@ -6,7 +6,7 @@
 
   // Selvitetään, missä kansiossa index.php on
   $script_name = $_SERVER['SCRIPT_NAME'];
-  $explode =  explode('/', $script_name);
+  $explode = explode('/', $script_name);
 
   if($explode[1] == 'index.php'){
     $base_folder = '';

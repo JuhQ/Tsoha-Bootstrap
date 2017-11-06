@@ -9,17 +9,17 @@ INSERT INTO luokka (nimi, vari) VALUES (
   '#d73a49'
 );
 
-INSERT INTO kayttajaAskare (kayttaja_id, askare_id) VALUES (
+INSERT INTO kayttajaaskare (kayttaja_id, askare_id) VALUES (
   (SELECT id FROM kayttaja WHERE tunnus='tunnus1'),
   (SELECT id FROM askare WHERE teksti='hello')
 );
 
-INSERT INTO kayttajaLuokka (kayttaja_id, luokka_id) VALUES (
+INSERT INTO kayttajaluokka (kayttaja_id, luokka_id) VALUES (
   (SELECT id FROM kayttaja WHERE tunnus='tunnus1'),
   (SELECT id FROM luokka WHERE nimi='testiluokka1')
 );
 
-INSERT INTO askareLuokka (askare_id, luokka_id) VALUES (
+INSERT INTO askareluokka (askare_id, luokka_id) VALUES (
   (SELECT id FROM askare WHERE teksti='hello'),
   (SELECT id FROM luokka WHERE nimi='testiluokka1')
 );

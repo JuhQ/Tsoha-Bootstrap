@@ -9,7 +9,7 @@ CREATE TABLE kayttaja (
 CREATE TABLE askare (
   id SERIAL PRIMARY KEY,
   teksti VARCHAR(400) NOT NULL,
-  tarkaysaste INTEGER DEFAULT 0,
+  tarkeysaste INTEGER DEFAULT 0,
   luontipaiva DATE DEFAULT CURRENT_DATE
 );
 
@@ -19,17 +19,17 @@ CREATE TABLE luokka (
   vari VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE kayttajaAskare (
+CREATE TABLE kayttajaaskare (
   kayttaja_id INTEGER REFERENCES kayttaja(id),
   askare_id INTEGER REFERENCES askare(id)
 );
 
-CREATE TABLE kayttajaLuokka (
+CREATE TABLE kayttajaluokka (
   kayttaja_id INTEGER REFERENCES kayttaja(id),
   luokka_id INTEGER REFERENCES luokka(id)
 );
 
-CREATE TABLE askareLuokka (
+CREATE TABLE askareluokka (
   askare_id INTEGER REFERENCES askare(id),
   luokka_id INTEGER REFERENCES luokka(id)
 );

@@ -2,10 +2,28 @@
 
 {% block content %}
   <div class="page-header">
-    <h1>Tervetuloa Tsoha Bootstrappiin!</h1>
+    <h1>Tervetuloa!</h1>
+    <p>
+      Tällä maanmainiolla ja ihanalla verkkosivustolla voit tallentaa kaikki tärkeät muistiinpanosi ja hukata ne myöhemmin.<br>
+      Tätä voi käyttää vaikka luentomuistiinpanojen tallentamiseen, ihastuksesi puhelinnumeron tallentamiseen tai sekalaisten ajatustesi tallentamiseen.<br><br>
+      Tämä on monin kerroin parempi ja yksinkertaisempi palvelu kuin mikään muu maailmalla oleva, älä käytä niitä, ne on halpakopioita.<br><br>
+
+      Ystävällisin terveisin,<br>
+      &nbsp; - Hevonen 🐴
+    </p>
   </div>
 
-  <p>
-    <a href="http://tsoha.github.io" class="btn btn-primary btn-lg">Tutustu materiaaliin <span class="glyphicon glyphicon-chevron-right"></span></a>
-  </p>
+  <div class="container">
+    <p>
+      <a class="btn btn-primary btn-lg" href="{{base_path}}/login" role="button">Kirjaudu sisään</a>
+      <a class="btn btn-success btn-lg" href="{{base_path}}/signup" role="button">Luo tunnus</a>
+    </p>
+  </div>
+
+  <hr>
+  <div class="container">
+    <p>
+      <a href="http://tsoha.github.io" class="btn btn-info">Tsohan materiaalit löytyy täältä <span class="glyphicon glyphicon-chevron-right"></span></a>
+    </p>
+  </div>
 {% endblock %}

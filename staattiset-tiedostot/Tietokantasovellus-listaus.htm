@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://juhataur.users.cs.helsinki.fi/tsoha/esimerkkilistaus -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+              Tietokantasovellus
+          </title>
+
+          <!-- Bootstrap (tyylitiedosto) -->
+      <link href="./Tietokantasovellus-listaus_files/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Oma tyylitiedostomme -->
+      <link href="./Tietokantasovellus-listaus_files/site.css" rel="stylesheet">
+      <style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{ display: none !important; }</style></head>
+
+  <body>
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Sovelluksen nimi -->
+          <a class="navbar-brand" href="http://juhataur.users.cs.helsinki.fi/tsoha">Tsoha Bootstrap</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="nav navbar-nav">
+            <!-- Navigaation linkit -->
+            <li><a href="http://juhataur.users.cs.helsinki.fi/tsoha">Etusivu</a></li>
+            <li><a href="http://juhataur.users.cs.helsinki.fi/tsoha/esimerkkilistaus">Esimerkkilistaus</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="main-container">
+      <!-- Dynaaminen sisältö tulee tähän -->
+      
+<input type="checkbox" id="toggle-perkele">
+<label for="toggle-perkele" class="magic">Lisää muistiinpano</label>
+<div class="row create-note-container">
+  <div class="col-md-3">
+    <div class="create-note">
+      <small class="text-muted">- oikeasti ei vielä tallenna minnekään</small>
+
+      <form method="post" action="http://juhataur.users.cs.helsinki.fi/tsoha/create">
+        
+<div class="form-group">
+  <label>Muistiinpanon sisältö</label>
+  <textarea class="form-control" name="teksti" rows="3" maxlength="400"></textarea>
+</div>
+
+<div class="form-group">
+  <label>Tärkeys</label>
+  <input type="number" class="form-control" name="tarkeysaste" min="1" max="5" value="">
+</div>
+<div class="input-group">
+  <button class="btn btn-success" type="submit">Tallenna</button>
+  <button class="btn btn-danger" type="reset">Peruuta</button>
+</div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<h2 class="lead">
+  Esimerkkilistaus muistiinpanoista
+  <small>- data kovakoodattu eikä hae kannasta vielä mitään</small>
+</h2>
+
+
+  <div class="row">
+
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/4">tässä on rivinvaihto<br>
+      tässä kohtaa</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>1</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/4" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/4" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/1">Life has no meaning a priori… It is up to you to give it a meaning, and value is nothing but the meaning that you choose.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>1</mark></small>
+    <small class="text-muted pull-right date">Luotu 09.11.2017 15.02</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/1" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/1" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/4">&lt;h2&gt;html:ää ei saa rendata&lt;/h2&gt;</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>1</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/4" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/4" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/1">Try again. Fail again. Fail better.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>1</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 16.02</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/1" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/1" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+    
+  </div>
+
+  
+  <div class="row">
+
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/1">Life has no meaning a priori… It is up to you to give it a meaning, and value is nothing but the meaning that you choose.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>1</mark></small>
+    <small class="text-muted pull-right date">Luotu 09.11.2017 15.02</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/1" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/1" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/2">The world is, of course, nothing but our conception of it.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>2</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/2" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/2" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/2">One repays a teacher badly if one always remains nothing but a pupil.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>2</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/2" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/2" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/3">One repays a teacher badly if one always remains nothing but a pupil.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>3</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/3" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/3" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+    
+  </div>
+
+  
+  <div class="row">
+
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/3">Life has no meaning a priori… It is up to you to give it a meaning, and value is nothing but the meaning that you choose.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>3</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/3" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/3" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/3">One thought-murder a day keeps the psychiatrist away.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>3</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/3" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/3" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/3">One repays a teacher badly if one always remains nothing but a pupil.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>4</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/3" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/3" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/1">Try again. Fail again. Fail better.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>4</mark></small>
+    <small class="text-muted pull-right date">Luotu 09.11.2017 15.02</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/1" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/1" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+    
+  </div>
+
+  
+  <div class="row">
+
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/2">Life has no meaning a priori… It is up to you to give it a meaning, and value is nothing but the meaning that you choose.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>5</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/2" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/2" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+          <div class="col-md-3">
+        <div class="note">
+  <div class="lead">
+    <a href="http://juhataur.users.cs.helsinki.fi/tsoha/view/2">One thought-murder a day keeps the psychiatrist away.</a>
+  </div>
+  <div class="clearfix">
+    <small class="text-muted pull-left priority">Tärkeys: <mark>5</mark></small>
+    <small class="text-muted pull-right date">Luotu 10.11.2017 18.48</small>
+  </div>
+
+  <div class="tools">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-success" href="http://juhataur.users.cs.helsinki.fi/tsoha/edit/2" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="http://juhataur.users.cs.helsinki.fi/tsoha/remove/2" role="button">Poista</a>
+    </div>
+  </div>
+</div>
+      </div>
+    
+  </div>
+
+  
+    </div>
+
+          <!-- jQuery -->
+      <script src="./Tietokantasovellus-listaus_files/jquery.min.js"></script>
+
+      <!-- Bootstrap (skriptitiedosto) -->
+      <script src="./Tietokantasovellus-listaus_files/bootstrap.min.js"></script>
+
+      <!-- Oma skriptitiedostomme -->
+      <script src="./Tietokantasovellus-listaus_files/site.js"></script>
+      
+
+</body></html>

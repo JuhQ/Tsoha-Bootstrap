@@ -11,8 +11,4 @@
       // Testaa koodiasi täällä
       View::make('helloworld.html');
     }
-
-    public static function login(){
-      View::make('suunnitelmat/login.html');
-    }
   }

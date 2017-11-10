@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Luo uusi tunnus</h1>
+
+  <!-- Kaikki lomakkeen elementit form-tagin sisään -->
+  <form method="post" action="{{base_path}}/signup">
+    <!-- Tekstikenttä käyttäjätunnukselle -->
+    <div class="form-group">
+      <label>Käyttäjätunnus</label>
+      <input type="text" class="form-control" name="username">
+    </div>
+
+    <!-- Salasanakenttä salasanalle -->
+    <div class="form-group">
+      <label>Salasana</label>
+      <input type="password" class="form-control" name="password">
+    </div>
+
+    <!-- Salasanakenttä salasanalle -->
+    <div class="form-group">
+      <label>Salasana uudelleen</label>
+      <input type="password" class="form-control" name="password2">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Luo tunnus</button>
+  </form>
+{% endblock %}

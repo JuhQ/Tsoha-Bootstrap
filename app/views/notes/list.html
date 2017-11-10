@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include 'notes/create.html' %}
+
+<h2 class="lead">
+  Esimerkkilistaus muistiinpanoista
+  <small>- data kovakoodattu eikä hae kannasta vielä mitään</small>
+</h2>
+
+{% for chunk in list %}
+
+  <div class="row">
+
+    {% for item in chunk %}
+      <div class="col-md-3">
+        {% include 'notes/note.html' with item %}
+      </div>
+    {% endfor %}
+
+  </div>
+
+  {% endfor %}
+
+{% endblock %}

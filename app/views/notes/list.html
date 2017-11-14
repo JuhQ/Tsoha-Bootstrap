@@ -4,8 +4,7 @@
 {% include 'notes/create.html' %}
 
 <h2 class="lead">
-  Esimerkkilistaus muistiinpanoista
-  <small>- data kovakoodattu eikä hae kannasta vielä mitään</small>
+  Lista muistiinpanoista
 </h2>
 
 {% for chunk in list %}
@@ -14,7 +13,7 @@
 
     {% for item in chunk %}
       <div class="col-md-3">
-        {% include 'notes/note.html' with item %}
+        {% include 'notes/note.html' %}
       </div>
     {% endfor %}
 

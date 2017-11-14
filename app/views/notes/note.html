@@ -1,5 +1,14 @@
 {% block content %}
 <div class="note">
+  <div class="categories">
+    {% if item.luokat %}
+      {% for luokka in item.luokat %}
+        <a href="{{base_path}}/esimerkkilistaus/{{luokka.nimi}}">
+          <mark style="background: {{luokka.vari}};">{{luokka.nimi}}</mark>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
   <div class="lead">
     <a href="{{base_path}}/view/{{item.id}}">{{ item.teksti | nl2br }}</a>
   </div>
@@ -10,8 +19,8 @@
 
   <div class="tools">
     <div class="btn-group btn-group-justified">
-      <a class="btn btn-success" href="{{base_path}}/edit/{{id}}" role="button">Muokkaa</a>
-      <a class="btn btn-danger" href="{{base_path}}/remove/{{id}}" role="button">Poista</a>
+      <a class="btn btn-success" href="{{base_path}}/edit/{{item.id}}" role="button">Muokkaa</a>
+      <a class="btn btn-danger" href="{{base_path}}/remove/{{item.id}}" role="button">Poista</a>
     </div>
   </div>
 </div>

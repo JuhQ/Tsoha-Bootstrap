@@ -10,10 +10,14 @@
     }
 
     public static function loginAction() {
+      if(Kayttaja::login($tunnus, $salasana)) {
+        echo 'Tunnus löytyi, tehdään jotain?<br>';
+      }
       echo 'Jos login toimisi, tässä oltaisiin';
     }
 
-    public static function signupAction() {
+    public static function signupAction($tunnus, $salasana) {
+      Kayttaja::save($tunnus, $salasana);
       echo 'Jos signup toimisi, tässä oltaisiin';
     }
 

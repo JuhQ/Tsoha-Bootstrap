@@ -1,21 +1,25 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    HomeController::index();
   });
 
   $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    HomeController::sandbox();
   });
 
 
   // Notes
-  $routes->get('/esimerkkilistaus', function() {
-    NotesController::exampleList();
+  $routes->get('/list', function() {
+    NotesController::list();
+  });
+
+  $routes->get('/list/:luokka', function($luokka) {
+    NotesController::list($luokka);
   });
 
   $routes->post('/create', function() {
-    NotesController::notImplemented();
+    NotesController::save($_POST);
   });
 
   $routes->get('/edit/:id', function($id) {
@@ -27,7 +31,7 @@
   });
 
   $routes->get('/remove/:id', function($id) {
-    NotesController::notImplemented($id);
+    NotesController::remove($id);
   });
 
   $routes->get('/view/:id', function($id) {
@@ -46,9 +50,9 @@
   });
 
   $routes->post('/login', function() {
-    UserController::loginAction();
+    UserController::loginAction($_POST['tunnus'], $_POST['salasana']);
   });
 
   $routes->post('/signup', function() {
-    UserController::signupAction();
+    UserController::signupAction($_POST['tunnus'], $_POST['salasana']);
   });

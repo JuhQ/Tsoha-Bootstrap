@@ -4,7 +4,7 @@
     // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
     protected $validators;
 
-    public function __construct($attributes = null){
+    public function __construct($attributes = array()){
       // Käydään assosiaatiolistan avaimet läpi
       foreach($attributes as $attribute => $value){
         // Jos avaimen niminen attribuutti on olemassa...

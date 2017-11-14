@@ -2,7 +2,7 @@
 CREATE TABLE kayttaja (
   id SERIAL PRIMARY KEY,
   tunnus VARCHAR(50) NOT NULL,
-  salasana VARCHAR(50) NOT NULL,
+  salasana VARCHAR(70) NOT NULL,
   rekisteroitymisPaiva DATE DEFAULT CURRENT_DATE
 );
 
@@ -20,16 +20,16 @@ CREATE TABLE luokka (
 );
 
 CREATE TABLE kayttajaaskare (
-  kayttaja_id INTEGER REFERENCES kayttaja(id),
-  askare_id INTEGER REFERENCES askare(id)
+  FOREIGN KEY kayttaja_id INTEGER REFERENCES kayttaja(id),
+  FOREIGN KEY askare_id INTEGER REFERENCES askare(id)
 );
 
 CREATE TABLE kayttajaluokka (
-  kayttaja_id INTEGER REFERENCES kayttaja(id),
-  luokka_id INTEGER REFERENCES luokka(id)
+  FOREIGN KEY kayttaja_id INTEGER REFERENCES kayttaja(id),
+  FOREIGN KEY luokka_id INTEGER REFERENCES luokka(id)
 );
 
 CREATE TABLE askareluokka (
-  askare_id INTEGER REFERENCES askare(id),
-  luokka_id INTEGER REFERENCES luokka(id)
+  FOREIGN KEY askare_id INTEGER REFERENCES askare(id),
+  FOREIGN KEY luokka_id INTEGER REFERENCES luokka(id)
 );

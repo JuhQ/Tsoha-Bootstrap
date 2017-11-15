@@ -7,7 +7,7 @@ class Kayttaja extends BaseModel {
   public static function getById($id) {
     $query = DB::connection()->prepare('
       SELECT
-        id, tunnus, rekisteroitymisPaiva
+        id, tunnus, rekisteroitymispaiva
       FROM
         kayttaja
       WHERE

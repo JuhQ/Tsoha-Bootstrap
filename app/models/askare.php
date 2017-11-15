@@ -7,7 +7,10 @@ class Askare extends BaseModel {
 
   public function __construct($attributes = array()) {
     // TODO: luokat tulee kannasta json stringinä, pitää tutkia asiaa lisää
-    $attributes['luokat'] = json_decode($attributes['luokat']);
+    if (isset($attributes['luokat'])) {
+      $attributes['luokat'] = array_filter(json_decode($attributes['luokat']));
+    }
+
     parent::__construct($attributes);
   }
 
@@ -17,23 +20,24 @@ class Askare extends BaseModel {
         askare.*,
         json_agg(luokka) AS luokat
       FROM
-        askare
-      JOIN
-        kayttajaaskare ON kayttajaaskare.askare_id = askare.id
-      JOIN
-        askareLuokka ON askareLuokka.askare_id = askare.id
-      JOIN
-        luokka ON luokka.id = askareLuokka.luokka_id
+        kayttajaaskare
+      LEFT JOIN
+        askare ON askare.id = kayttajaaskare.askare_id
+      LEFT JOIN
+        askareluokka ON askareluokka.askare_id = askare.id
+      LEFT JOIN
+        luokka ON luokka.id = askareluokka.luokka_id
       WHERE
         kayttajaaskare.kayttaja_id = :kayttaja_id
       GROUP BY
         askare.id
     ');
     $query->execute(array('kayttaja_id' => $kayttaja_id));
+    $rows = $query->fetchAll();
 
     return array_map(function($row) {
       return new Askare($row);
-    }, $query->fetchAll());
+    }, $rows);
   }
 
   public static function getById($kayttaja_id, $id) {
@@ -42,13 +46,13 @@ class Askare extends BaseModel {
         askare.*,
         json_agg(luokka) AS luokat
       FROM
-        askare
-      JOIN
-        kayttajaaskare ON kayttajaaskare.askare_id = askare.id
-      JOIN
-        askareLuokka ON askareLuokka.askare_id = askare.id
-      JOIN
-        luokka ON luokka.id = askareLuokka.luokka_id
+        kayttajaaskare
+      LEFT JOIN
+        askare ON askare.id = kayttajaaskare.askare_id
+      LEFT JOIN
+        askareluokka ON askareluokka.askare_id = askare.id
+      LEFT JOIN
+        luokka ON luokka.id = askareluokka.luokka_id
       WHERE
         askare.id = :id AND
         kayttajaaskare.kayttaja_id = :kayttaja_id
@@ -79,7 +83,7 @@ class Askare extends BaseModel {
       }, $luokat);
 
       foreach ($luokkaIds as $luokkaId) {
-        AskareLuokka::save($askare_id, $luokkaId);
+        Askareluokka::save($askare_id, $luokkaId);
         KayttajaLuokka::save($kayttaja_id, $luokkaId);
       }
     }
@@ -92,7 +96,7 @@ class Askare extends BaseModel {
       $query = DB::connection()->prepare('REMOVE FROM askare WHERE id = :id LIMIT 1');
       $query->execute(array('id' => $id));
 
-      AskareLuokka::removeByAskareId($id);
+      Askareluokka::removeByAskareId($id);
       KayttajaAskare::remove($kayttaja_id, $id);
     }
   }

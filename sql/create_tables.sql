@@ -3,7 +3,7 @@ CREATE TABLE kayttaja (
   id SERIAL PRIMARY KEY,
   tunnus VARCHAR(50) NOT NULL,
   salasana VARCHAR(70) NOT NULL,
-  rekisteroitymisPaiva DATE DEFAULT CURRENT_DATE
+  rekisteroitymispaiva DATE DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE askare (

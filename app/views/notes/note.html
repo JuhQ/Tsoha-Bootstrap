@@ -1,14 +1,14 @@
 {% block content %}
 <div class="note">
-  <div class="categories">
-    {% if item.luokat %}
+  {% if item.luokat | length > 0 %}
+    <div class="categories">
       {% for luokka in item.luokat %}
         <a href="{{base_path}}/esimerkkilistaus/{{luokka.nimi}}">
           <mark style="background: {{luokka.vari}};">{{luokka.nimi}}</mark>
         </a>
       {% endfor %}
-    {% endif %}
-  </div>
+    </div>
+  {% endif %}
   <div class="lead">
     <a href="{{base_path}}/view/{{item.id}}">{{ item.teksti | nl2br }}</a>
   </div>

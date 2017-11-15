@@ -29,7 +29,7 @@ class KayttajaLuokka extends BaseModel {
   }
 
   public static function remove($kayttaja_id, $luokka_id) {
-    $query = DB::connection()->prepare('REMOVE FROM kayttajaluokka WHERE kayttaja_id = :kayttaja_id AND  luokka_id = :luokka_id LIMIT 1');
+    $query = DB::connection()->prepare('DELETE FROM kayttajaluokka WHERE kayttaja_id = :kayttaja_id AND  luokka_id = :luokka_id');
     $query->execute(array('kayttaja_id' => $kayttaja_id, 'luokka_id' => $luokka_id));
   }
 }

@@ -30,12 +30,12 @@ class AskareLuokka extends BaseModel {
 
   // TODO: not yet used
   public static function remove($askare_id, $luokka_id) {
-    $query = DB::connection()->prepare('REMOVE FROM askareluokka WHERE askare_id = :askare_id AND luokka_id = :luokka_id LIMIT 1');
+    $query = DB::connection()->prepare('DELETE FROM askareluokka WHERE askare_id = :askare_id AND luokka_id = :luokka_id');
     $query->execute(array('askare_id' => $askare_id, 'luokka_id' => $luokka_id));
   }
 
   public static function removeByAskareId($askare_id) {
-    $query = DB::connection()->prepare('REMOVE FROM askareluokka WHERE askare_id = :askare_id LIMIT 1');
+    $query = DB::connection()->prepare('DELETE FROM askareluokka WHERE askare_id = :askare_id');
     $query->execute(array('askare_id' => $askare_id));
   }
 }

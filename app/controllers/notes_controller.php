@@ -31,6 +31,7 @@ class NotesController extends BaseController {
       $luokat = $data['luokat'];
     }
     Askare::save($kayttaja_id, $data['teksti'], $data['tarkeysaste'], $luokat);
+    Redirect::to('/list', array('message' => 'Askare luotu'));
   }
 
   public static function saveEdit($data) {
@@ -40,13 +41,15 @@ class NotesController extends BaseController {
     if (isset($data['luokat'])) {
       $luokat = $data['luokat'];
     }
-    Askare::saveEdit($kayttaja_id, $data['teksti'], $data['tarkeysaste'], $luokat);
+    Askare::saveEdit($kayttaja_id, $data['id'], $data['teksti'], $data['tarkeysaste'], $luokat);
+    Redirect::to('/view/' . $data['id'], array('message' => 'Askaretta muokattu'));
   }
 
   public static function remove($id) {
     // Kayttajan id toistaiseksi kovakoodattu
     $kayttaja_id = 1;
     Askare::remove($kayttaja_id, $id);
+    Redirect::to('/list', array('message' => 'Askare poistettu'));
   }
 
   public static function notImplemented() {

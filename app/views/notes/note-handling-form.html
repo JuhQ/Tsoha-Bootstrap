@@ -2,7 +2,7 @@
   <label>Muistiinpanon sisältö</label>
   <textarea class="form-control" name="teksti" rows="3" maxlength="400">{{item.teksti}}</textarea>
 </div>
-
+<input type="hidden" name="id" value="{{item.id}}">
 <div class="form-group">
   <label>Tärkeys</label>
   <input type="number" class="form-control" name="tarkeysaste" min="1" max="5" value="{{item.tarkeysaste}}">

@@ -5,8 +5,16 @@
 <input type="hidden" name="id" value="{{item.id}}">
 <div class="form-group">
   <label>Tärkeys</label>
-  <input type="number" class="form-control" name="tarkeysaste" min="1" max="5" value="{{item.tarkeysaste}}">
+  <span class="star-cb-group">
+    <input type="radio" id="tarkeysaste-5" name="tarkeysaste" value="5" {% if item.tarkeysaste is same as(5) %}checked="checked"{% endif %} /><label for="tarkeysaste-5">5</label>
+    <input type="radio" id="tarkeysaste-4" name="tarkeysaste" value="4" {% if item.tarkeysaste is same as(4) %}checked="checked"{% endif %} /><label for="tarkeysaste-4">4</label>
+    <input type="radio" id="tarkeysaste-3" name="tarkeysaste" value="3" {% if item.tarkeysaste is same as(3) %}checked="checked"{% endif %} /><label for="tarkeysaste-3">3</label>
+    <input type="radio" id="tarkeysaste-2" name="tarkeysaste" value="2" {% if item.tarkeysaste is same as(2) %}checked="checked"{% endif %} /><label for="tarkeysaste-2">2</label>
+    <input type="radio" id="tarkeysaste-1" name="tarkeysaste" value="1" {% if item.tarkeysaste is same as(1) %}checked="checked"{% endif %} /><label for="tarkeysaste-1">1</label>
+    <input type="radio" id="tarkeysaste-0" name="tarkeysaste" value="0" class="star-cb-clear" /><label for="tarkeysaste-0">0</label>
+  </span>
 </div>
+
 <div class="input-group">
   <button class="btn btn-success" type="submit">Tallenna</button>
   <button class="btn btn-danger" type="reset">Peruuta</button>

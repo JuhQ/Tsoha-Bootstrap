@@ -4,11 +4,17 @@
 class Askare extends BaseModel {
 
   public $id, $teksti, $tarkeysaste, $luontipaiva, $luokat, $kayttaja_id;
+  public $luokatString;
 
   public function __construct($attributes = array()) {
     // TODO: luokat tulee kannasta json stringinä, pitää tutkia asiaa lisää
     if (isset($attributes['luokat'])) {
       $attributes['luokat'] = array_filter(json_decode($attributes['luokat']));
+      $luokkienNimet = array_map(function($luokka) {
+        return $luokka->nimi;
+      }, $attributes['luokat']);
+
+      $attributes['luokatString'] = implode($luokkienNimet, ',');
     }
 
     parent::__construct($attributes);
@@ -76,22 +82,36 @@ class Askare extends BaseModel {
     $query = DB::connection()->prepare('INSERT INTO askare (teksti, tarkeysaste) VALUES (:teksti, :tarkeysaste) RETURNING id');
     $query->execute(array('teksti' => $teksti, 'tarkeysaste' => $tarkeysaste));
     $row = $query->fetch();
-    Kint::dump($row);
-
     $askare_id = $row['id'];
 
     KayttajaAskare::save($kayttaja_id, $askare_id);
 
-    if (!empty($luokat) && is_array($luokat)) {
-      $luokkaIds = array_map(function($luokka) {
-        $existingLuokka = Luokka::findByName($luokka);
-        return $existingLuokka ?
-          $existingLuokka->id :
-          Luokka::save($luokka['nimi'], $luokka['vari']);
+    $luokkia = !empty($luokat) && (is_array($luokat) || is_string($luokat));
+    $luokatOnStringeja = $luokkia && is_string($luokat);
+
+    if ($luokkia && is_string($luokat)) {
+      $luokat = explode(',', $luokat);
+    }
+
+    // Toistaiseksi kaikki luokat on pinkkejä
+    $defaultVari = 'pink';
+
+    if ($luokkia) {
+      $luokkaIds = array_map(function($luokka) use ($luokatOnStringeja, $defaultVari) {
+        if ($luokatOnStringeja) {
+          $nimi = $luokka;
+          $vari = $defaultVari;
+        } else {
+          $nimi = $luokka['nimi'];
+          $vari = $luokka['vari'];
+        }
+
+        $existingLuokka = Luokka::getByNimi($nimi);
+        return $existingLuokka ? $existingLuokka->id : Luokka::save($nimi, $vari);
       }, $luokat);
 
       foreach ($luokkaIds as $luokkaId) {
-        Askareluokka::save($askare_id, $luokkaId);
+        AskareLuokka::save($askare_id, $luokkaId);
         KayttajaLuokka::save($kayttaja_id, $luokkaId);
       }
     }

@@ -1,7 +1,7 @@
 
 CREATE TABLE kayttaja (
   id SERIAL PRIMARY KEY,
-  tunnus VARCHAR(50) NOT NULL,
+  tunnus VARCHAR(50) NOT NULL UNIQUE,
   salasana VARCHAR(70) NOT NULL,
   rekisteroitymispaiva TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -16,7 +16,7 @@ CREATE TABLE askare (
 CREATE TABLE luokka (
   id SERIAL PRIMARY KEY,
   nimi VARCHAR(50) NOT NULL,
-  vari VARCHAR(10) NOT NULL
+  vari VARCHAR(10) NOT NULL DEFAULT 'pink'
 );
 
 CREATE TABLE kayttajaaskare (

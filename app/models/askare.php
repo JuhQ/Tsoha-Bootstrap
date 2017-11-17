@@ -84,7 +84,10 @@ class Askare extends BaseModel {
     $askare_id = $row['id'];
 
     KayttajaAskare::save($kayttaja_id, $askare_id);
+    Askare::saveRelations($kayttaja_id, $askare_id, $luokat);
+  }
 
+  public static function saveRelations($kayttaja_id, $askare_id, $luokat) {
     $luokkia = !empty($luokat) && (is_array($luokat) || is_string($luokat));
     $luokatOnStringeja = $luokkia && is_string($luokat);
 
@@ -92,28 +95,32 @@ class Askare extends BaseModel {
       $luokat = explode(',', $luokat);
     }
 
-    // Toistaiseksi kaikki luokat on pinkkejä
-    $defaultVari = 'pink';
-
     if ($luokkia) {
-      $luokkaIds = array_map(function($luokka) use ($luokatOnStringeja, $defaultVari) {
-        if ($luokatOnStringeja) {
-          $nimi = $luokka;
-          $vari = $defaultVari;
-        } else {
-          $nimi = $luokka['nimi'];
-          $vari = $luokka['vari'];
-        }
-
-        $existingLuokka = Luokka::getByNimi($nimi);
-        return $existingLuokka ? $existingLuokka->id : Luokka::save($nimi, $vari);
-      }, $luokat);
+      $luokkaIds = self::mapLuokat($luokat);
 
       foreach ($luokkaIds as $luokkaId) {
         AskareLuokka::save($askare_id, $luokkaId);
         KayttajaLuokka::save($kayttaja_id, $luokkaId);
       }
     }
+  }
+
+  private static function mapLuokat($luokat) {
+    // Toistaiseksi kaikki luokat on pinkkejä
+    $defaultVari = 'pink';
+
+    return array_map(function($luokka) use ($luokat, $defaultVari) {
+      if (!isset($luokka['vari'])) {
+        $nimi = $luokka;
+        $vari = $defaultVari;
+      } else {
+        $nimi = $luokka['nimi'];
+        $vari = $luokka['vari'];
+      }
+
+      $existingLuokka = Luokka::getByNimi($nimi);
+      return $existingLuokka ? $existingLuokka->id : Luokka::save($nimi, $vari);
+    }, $luokat);
   }
 
   public static function remove($kayttaja_id, $id) {

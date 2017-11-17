@@ -9,8 +9,8 @@
       View::make('users/signup.html', array('title' => 'Rekisteröidy'));
     }
 
-    public static function loginAction() {
-      if(Kayttaja::login($tunnus, $salasana)) {
+    public static function loginAction($tunnus, $salasana) {
+      if (Kayttaja::login($tunnus, $salasana)) {
         echo 'Tunnus löytyi, tehdään jotain?<br>';
       }
       echo 'Jos login toimisi, tässä oltaisiin';

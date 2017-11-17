@@ -50,9 +50,21 @@
   });
 
   $routes->post('/login', function() {
-    UserController::loginAction($_POST['tunnus'], $_POST['salasana']);
+    echo 'Kirjautuminen ei toimi vielä 😭';
+    exit;
+    if (isset($_POST['tunnus'], $_POST['salasana'])) {
+      UserController::loginAction($_POST['tunnus'], $_POST['salasana']);
+    } else {
+      echo 'nope';
+    }
   });
 
   $routes->post('/signup', function() {
-    UserController::signupAction($_POST['tunnus'], $_POST['salasana']);
+    echo 'Rekisteröinti ei toimi vielä 😭';
+    exit;
+    if (isset($_POST['tunnus'], $_POST['salasana'])) {
+      UserController::signupAction($_POST['tunnus'], $_POST['salasana']);
+    } else {
+      echo 'nope';
+    }
   });

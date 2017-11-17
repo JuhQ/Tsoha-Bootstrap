@@ -1,6 +1,5 @@
 <?php
 
-
 class Askare extends BaseModel {
 
   public $id, $teksti, $tarkeysaste, $luontipaiva, $luokat, $kayttaja_id;

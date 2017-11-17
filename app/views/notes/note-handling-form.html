@@ -4,7 +4,9 @@
 </div>
 <input type="hidden" name="id" value="{{item.id}}">
 <div class="form-group">
-  <label>Tärkeys</label>
+  <div>
+    <label>Tärkeys</label>
+  </div>
   <span class="star-cb-group">
     <input type="radio" id="tarkeysaste-5" name="tarkeysaste" value="5" {% if item.tarkeysaste is same as(5) %}checked="checked"{% endif %} /><label for="tarkeysaste-5">5</label>
     <input type="radio" id="tarkeysaste-4" name="tarkeysaste" value="4" {% if item.tarkeysaste is same as(4) %}checked="checked"{% endif %} /><label for="tarkeysaste-4">4</label>

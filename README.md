@@ -22,7 +22,10 @@ Toimintoja:
 
 - [ ] Rekisteröityminen
 - [ ] Kirjautuminen
-- [x] Askareen lisäys, muokkaus ja poisto
+- [ ] Askareen lisäys, muokkaus ja poisto
+  - [x] lisäys
+  - [ ] muokkaus
+  - [x] poisto
 - [ ] Tärkeysasteen lisäys ja poisto
   - [x] lisäys
   - [ ] poisto

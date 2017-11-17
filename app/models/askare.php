@@ -96,7 +96,7 @@ class Askare extends BaseModel {
     }
 
     if ($luokkia) {
-      $luokkaIds = self::mapLuokat($luokat);
+      $luokkaIds = self::mapLuokat($luokat, $luokatOnStringeja);
 
       foreach ($luokkaIds as $luokkaId) {
         AskareLuokka::save($askare_id, $luokkaId);
@@ -105,12 +105,12 @@ class Askare extends BaseModel {
     }
   }
 
-  private static function mapLuokat($luokat) {
+  private static function mapLuokat($luokat, $luokatOnStringeja) {
     // Toistaiseksi kaikki luokat on pinkkejä
     $defaultVari = 'pink';
 
-    return array_map(function($luokka) use ($luokat, $defaultVari) {
-      if (!isset($luokka['vari'])) {
+    return array_map(function($luokka) use ($luokat, $defaultVari, $luokatOnStringeja) {
+      if ($luokatOnStringeja) {
         $nimi = $luokka;
         $vari = $defaultVari;
       } else {

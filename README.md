@@ -22,10 +22,14 @@ Toimintoja:
 
 - [ ] Rekisteröityminen
 - [ ] Kirjautuminen
-- [ ] Askareen lisäys, muokkaus ja poisto
+- [x] Askareen lisäys, muokkaus ja poisto
 - [ ] Tärkeysasteen lisäys ja poisto
+  - [x] lisäys
+  - [ ] poisto
 - [ ] Askareen tärkeyttäminen lisäyksessä tai myöhemmin
 - [ ] Luokkien lisäys ja poisto
-- [ ] Askareiden luokittelu
+  - [x] lisäys
+  - [ ] poisto
+- [x] Askareiden luokittelu
 - [ ] Luokat voivat olla sisäkkäisiä
-- [ ] Yhdellä askareella voi olla monta luokkaa
+- [x] Yhdellä askareella voi olla monta luokkaa

@@ -17,22 +17,28 @@ Työn aiheena [muistilista](http://advancedkittenry.github.io/suunnittelu_ja_tyo
 
 
 
-### TODO
+## Käyttöohjeet
+Työ sijaitsee osoitteessa [http://juhataur.users.cs.helsinki.fi/tsoha/](http://juhataur.users.cs.helsinki.fi/tsoha/).
+
+
+
+
+#### TODO
 Toimintoja:
 
 - [ ] Rekisteröityminen
 - [ ] Kirjautuminen
-- [ ] Askareen lisäys, muokkaus ja poisto
+- [x] Askareen lisäys, muokkaus ja poisto
   - [x] lisäys
-  - [ ] muokkaus
+  - [x] muokkaus
   - [x] poisto
 - [ ] Tärkeysasteen lisäys ja poisto
   - [x] lisäys
   - [ ] poisto
-- [ ] Askareen tärkeyttäminen lisäyksessä tai myöhemmin
-- [ ] Luokkien lisäys ja poisto
+- [x] Askareen tärkeyttäminen lisäyksessä tai myöhemmin
+- [x] Luokkien lisäys ja poisto
   - [x] lisäys
-  - [ ] poisto
+  - [x] poisto
 - [x] Askareiden luokittelu
 - [ ] Luokat voivat olla sisäkkäisiä
 - [x] Yhdellä askareella voi olla monta luokkaa

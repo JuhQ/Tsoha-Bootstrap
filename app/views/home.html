@@ -13,6 +13,15 @@
     </p>
   </div>
 
+  {% if user_logged_in %}
+    <div class="container">
+      <p>
+        <a class="btn btn-primary btn-lg" href="{{base_path}}/list" role="button">Muistiinpanolistaan tästä</a>
+      </p>
+    </div>
+    <hr>
+  {% endif %}
+
   <div class="container">
     <p>
       <a class="btn btn-primary btn-lg" href="{{base_path}}/login" role="button">Kirjaudu sisään</a>

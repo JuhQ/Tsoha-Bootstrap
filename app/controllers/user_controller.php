@@ -20,5 +20,4 @@
       Kayttaja::save($tunnus, $salasana);
       echo 'Jos signup toimisi, tässä oltaisiin';
     }
-
   }

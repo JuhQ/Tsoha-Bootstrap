@@ -50,6 +50,13 @@
 
     <div id="main-container">
       <!-- Dynaaminen sisältö tulee tähän -->
+      {% if message is defined %}
+        {% if error is defined %}
+          <div class="alert alert-danger" role="alert">{{message}}</div>
+        {% else %}
+          <div class="alert alert-success" role="alert">{{message}}</div>
+        {% endif %}
+      {% endif %}
       {% block content %}{% endblock %}
     </div>
 

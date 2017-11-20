@@ -27,7 +27,7 @@
   });
 
   $routes->post('/edit/:id', function($id) {
-    NotesController::notImplemented($id);
+    NotesController::saveEdit($id, $_POST);
   });
 
   $routes->get('/remove/:id', function($id) {

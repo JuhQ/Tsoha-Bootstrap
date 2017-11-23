@@ -3,21 +3,23 @@
   {% if item.luokat | length > 0 %}
     <div class="categories">
       {% for luokka in item.luokat %}
-        <a href="{{base_path}}/list/{{luokka.nimi}}">
-          <mark style="background: {{luokka.vari}};">{{luokka.nimi}}</mark>
-        </a>
+        <a href="{{base_path}}/list/{{luokka.nimi}}"><mark style="background: {{luokka.vari}};">{{luokka.nimi}}</mark></a>
       {% endfor %}
     </div>
   {% endif %}
   <div class="lead">
     <a href="{{base_path}}/view/{{item.id}}">{{ item.teksti | nl2br }}</a>
   </div>
-  <div class="clearfix">
-    {% if item.tarkeysaste > 0 %}
-      <small class="text-muted pull-left priority">Tärkeys: <mark>{{ item.tarkeysaste }}</mark></small>
-    {% endif %}
-    <small class="text-muted pull-right date">Luotu {{ item.luontipaiva | date("d.m.Y H.i") }}</small>
-  </div>
+  {% if item.tarkeysaste > 0 %}
+    <div>
+    <span class="text-muted priority">Tärkeys:
+      {% for i in range(1, item.tarkeysaste) %}
+        🤡
+      {% endfor %}
+      </span>
+    </div>
+  {% endif %}
+  <small class="text-muted date">Luotu {{ item.luontipaiva | date("d.m.Y H.i") }}</small>
 
   <div class="tools">
     <div class="btn-group btn-group-justified">

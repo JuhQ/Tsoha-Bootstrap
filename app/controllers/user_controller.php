@@ -57,7 +57,7 @@
         return false;
       }
 
-      if (!$Kayttaja::validate_password($salasana, $salasana2)) {
+      if (!Kayttaja::validate_password($salasana, $salasana2)) {
         Redirect::to('/signup', array(
           'message' => 'Salasana ei ole validi! 😵 Salasanan pitää olla vähintään ' . Kayttaja::min_salasana() . ' merkkiä pitkä.',
           'error' => true

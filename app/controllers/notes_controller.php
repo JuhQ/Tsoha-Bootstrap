@@ -12,7 +12,7 @@ function cleanData($data) {
   }
 
   if (empty($data['tarkeysaste'])) {
-    $data['tarkeysaste'] = 1;
+    $data['tarkeysaste'] = 0;
   }
 
   return $data;
@@ -41,13 +41,24 @@ class NotesController extends BaseController {
     View::make('notes/single-note.html', array('item' => Askare::getById($kayttaja_id, $id)));
   }
 
+  public static function create() {
+    View::make('notes/add-note.html');
+  }
+
   public static function save($data) {
     // Kayttajan id toistaiseksi kovakoodattu
     $kayttaja_id = 1;
     $data = cleanData($data);
 
     if (!isset($data['teksti']) || empty($data['teksti'])) {
-      Redirect::to('/list', array('message' => 'Askareen lisäyksessä ongelma', 'error' => true));
+      $data['luokatString'] = $data['luokat'];
+      $data['tarkeysaste'] = (int) $data['tarkeysaste'];
+
+      Redirect::to('/add', array(
+        'message' => 'Askareen lisäyksessä ongelma',
+        'error' => true,
+        'item' => $data
+      ));
       return;
     }
 

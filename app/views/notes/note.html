@@ -13,7 +13,9 @@
     <a href="{{base_path}}/view/{{item.id}}">{{ item.teksti | nl2br }}</a>
   </div>
   <div class="clearfix">
-    <small class="text-muted pull-left priority">Tärkeys: <mark>{{ item.tarkeysaste }}</mark></small>
+    {% if item.tarkeysaste > 0 %}
+      <small class="text-muted pull-left priority">Tärkeys: <mark>{{ item.tarkeysaste }}</mark></small>
+    {% endif %}
     <small class="text-muted pull-right date">Luotu {{ item.luontipaiva | date("d.m.Y H.i") }}</small>
   </div>
 

@@ -63,6 +63,10 @@
   display: none;
 }
 
+.add-note .create-note-container {
+  display: inherit;
+}
+
 label.magic {
   cursor: pointer;
   font-size: 21px;

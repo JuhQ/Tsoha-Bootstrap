@@ -32,9 +32,9 @@ Toimintoja:
   - [x] lisäys
   - [x] muokkaus
   - [x] poisto
-- [ ] Tärkeysasteen lisäys ja poisto
+- [x] Tärkeysasteen lisäys ja poisto
   - [x] lisäys
-  - [ ] poisto
+  - [x] poisto
 - [x] Askareen tärkeyttäminen lisäyksessä tai myöhemmin
 - [x] Luokkien lisäys ja poisto
   - [x] lisäys

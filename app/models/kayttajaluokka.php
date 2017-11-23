@@ -15,8 +15,12 @@ class KayttajaLuokka extends BaseModel {
         luokka_id = :luokka_id
       ');
     $query->execute(array('kayttaja_id' => $kayttaja_id, 'luokka_id' => $luokka_id));
+    $row = $query->fetch();
+    if (!$row) {
+      return false;
+    }
 
-    return new KayttajaLuokka($query->fetch());
+    return new KayttajaLuokka($row);
   }
 
   // TODO: Tarviiko tämän returnaa mitään

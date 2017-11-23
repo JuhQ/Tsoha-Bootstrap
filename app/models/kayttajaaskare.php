@@ -15,8 +15,12 @@ class KayttajaAskare extends BaseModel {
         kayttaja_id = :kayttaja_id
       ');
     $query->execute(array('kayttaja_id' => $kayttaja_id, 'askare_id' => $askare_id));
+    $row = $query->fetch();
+    if (!$row) {
+      return false;
+    }
 
-    return new KayttajaAskare($query->fetch());
+    return new KayttajaAskare($row);
   }
 
   // TODO: Tarviiko tämän returnaa mitään

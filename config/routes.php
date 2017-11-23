@@ -14,8 +14,13 @@
     NotesController::list();
   });
 
+  // TODO: deprekoi tai lisää filtteröintitoiminnallisuus
   $routes->get('/list/:luokka', function($luokka) {
     NotesController::list($luokka);
+  });
+
+  $routes->get('/add', function() {
+    NotesController::create();
   });
 
   $routes->post('/create', function() {
@@ -37,7 +42,6 @@
   $routes->get('/view/:id', function($id) {
     NotesController::viewSingle($id);
   });
-
 
 
   // users

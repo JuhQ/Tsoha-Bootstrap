@@ -14,8 +14,12 @@ class Kayttaja extends BaseModel {
         id = :id
       ');
     $query->execute(array('id' => $id));
+    $row = $query->fetch();
+    if (!$row) {
+      return false;
+    }
 
-    return new Kayttaja($query->fetch());
+    return new Kayttaja($row);
   }
 
   public static function getByTunnus($tunnus) {
@@ -28,8 +32,12 @@ class Kayttaja extends BaseModel {
         tunnus = :tunnus
       ');
     $query->execute(array('tunnus' => $tunnus));
+    $row = $query->fetch();
+    if (!$row) {
+      return false;
+    }
 
-    return new Kayttaja($query->fetch());
+    return new Kayttaja($row);
   }
 
   public static function save($tunnus, $salasana) {
@@ -41,7 +49,7 @@ class Kayttaja extends BaseModel {
     return $row['id'];
   }
 
-  public static function login($tunnus, $salasana) {
+  public static function authenticate($tunnus, $salasana) {
     $tunnus = Kayttaja::getByTunnus($tunnus);
     return password_verify($tunnus['salasana'], $salasana) ? $tunnus : false;
   }

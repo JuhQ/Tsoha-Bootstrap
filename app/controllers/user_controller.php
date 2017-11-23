@@ -10,8 +10,10 @@
     }
 
     public static function loginAction($tunnus, $salasana) {
-      if (Kayttaja::login($tunnus, $salasana)) {
+      $user = Kayttaja::authenticate($tunnus, $salasana);
+      if ($user) {
         echo 'Tunnus löytyi, tehdään jotain?<br>';
+        $_SESSION['user'] = $user->id;
       }
       echo 'Jos login toimisi, tässä oltaisiin';
     }

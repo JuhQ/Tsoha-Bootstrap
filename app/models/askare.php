@@ -80,15 +80,15 @@ class Askare extends BaseModel {
     return new Askare($row);
   }
 
-  private static function setTarkeysAste($tarkeysaste = 1) {
+  private static function setTarkeysAste($tarkeysaste = 0) {
     if (empty($tarkeysaste)) {
-      $tarkeysaste = 1;
+      return 0;
     }
 
     return $tarkeysaste;
   }
 
-  public static function save($kayttaja_id, $teksti, $tarkeysaste = 1, $luokat = array()) {
+  public static function save($kayttaja_id, $teksti, $tarkeysaste = 0, $luokat = array()) {
     $query = DB::connection()->prepare('INSERT INTO askare (teksti, tarkeysaste) VALUES (:teksti, :tarkeysaste) RETURNING id');
     $query->execute(array('teksti' => $teksti, 'tarkeysaste' => self::setTarkeysAste($tarkeysaste)));
     $row = $query->fetch();
@@ -98,7 +98,7 @@ class Askare extends BaseModel {
     self::saveRelations($kayttaja_id, $askare_id, $luokat);
   }
 
-  public static function update($askare_id, $kayttaja_id, $teksti, $tarkeysaste = 1, $luokat = array()) {
+  public static function update($askare_id, $kayttaja_id, $teksti, $tarkeysaste = 0, $luokat = array()) {
     $row = Askare::getById($kayttaja_id, $askare_id);
     if (!$row || $row->kayttaja_id !== $kayttaja_id) {
       return false;
@@ -118,7 +118,7 @@ class Askare extends BaseModel {
       'tarkeysaste' => self::setTarkeysAste($tarkeysaste),
       'id' => $askare_id)
     );
-    $row = $query->fetch();
+    $query->fetch();
 
     // Poista vanhat luokat
     AskareLuokka::removeByAskareId($askare_id);

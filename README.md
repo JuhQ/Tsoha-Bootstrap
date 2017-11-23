@@ -27,7 +27,8 @@ Työ sijaitsee osoitteessa [http://juhataur.users.cs.helsinki.fi/tsoha/](http://
 Toimintoja:
 
 - [x] Rekisteröityminen
-- [ ] Kirjautuminen
+- [x] Kirjautuminen
+- [ ] Käyttöohjeet
 - [x] Askareen lisäys, muokkaus ja poisto
   - [x] lisäys
   - [x] muokkaus

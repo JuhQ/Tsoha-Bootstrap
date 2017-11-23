@@ -54,19 +54,9 @@
   });
 
   $routes->post('/login', function() {
-    echo 'Kirjautuminen ei toimi vielä 😭';
-    exit;
-    if (isset($_POST['username'], $_POST['password'])) {
-      UserController::loginAction($_POST['username'], $_POST['password']);
-    } else {
-      echo 'nope';
-    }
+    UserController::loginAction($_POST['username'], $_POST['password']);
   });
 
   $routes->post('/signup', function() {
-    if (isset($_POST['username'], $_POST['password'], $_POST['password2']) && $_POST['password'] === $_POST['password2']) {
-      UserController::signupAction($_POST['username'], $_POST['password']);
-    } else {
-      echo 'Rekisteröityminen ei nyt onnistunut perhana 😭';
-    }
+    UserController::signupAction($_POST['username'], $_POST['password'], $_POST['password2']);
   });

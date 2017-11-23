@@ -2,12 +2,12 @@
 
 class Kayttaja extends BaseModel {
 
-  public $id, $luokka_id;
+  public $id, $luokka_id, $salasana, $rekisteroitymispaiva;
 
   public static function getById($id) {
     $query = DB::connection()->prepare('
       SELECT
-        id, tunnus, rekisteroitymispaiva
+        id, tunnus, salasana, rekisteroitymispaiva
       FROM
         kayttaja
       WHERE
@@ -25,7 +25,7 @@ class Kayttaja extends BaseModel {
   public static function getByTunnus($tunnus) {
     $query = DB::connection()->prepare('
       SELECT
-        id, tunnus, rekisteroitymisPaiva
+        id, tunnus, salasana, rekisteroitymispaiva
       FROM
         kayttaja
       WHERE
@@ -40,7 +40,7 @@ class Kayttaja extends BaseModel {
     return new Kayttaja($row);
   }
 
-  public static function save($tunnus, $salasana) {
+  public static function save($tunnus, $salasana, $salasana2) {
     $salasana = password_hash($salasana, PASSWORD_BCRYPT);
     $query = DB::connection()->prepare('INSERT INTO kayttaja (tunnus, salasana) VALUES (:tunnus, :salasana) RETURNING id');
     $query->execute(array('tunnus' => $tunnus, 'salasana' => $salasana));
@@ -50,12 +50,20 @@ class Kayttaja extends BaseModel {
   }
 
   public static function authenticate($tunnus, $salasana) {
-    $tunnus = Kayttaja::getByTunnus($tunnus);
-    return password_verify($tunnus['salasana'], $salasana) ? $tunnus : false;
+    $kayttaja = Kayttaja::getByTunnus($tunnus);
+    return password_verify($salasana, $kayttaja->salasana) ? $kayttaja : false;
   }
 
   public static function validate_tunnus($tunnus) {
     $minLength = 3;
     return !empty($tunnus) && $tunnus !== null && strlen($tunnus) >= $minLength;
+  }
+
+  public static function min_salasana() {
+    return 3;
+  }
+
+  public static function validate_password($password, $password2) {
+    return $password === $password2 && !empty($password) && strlen($password) >= self::min_salasana();
   }
 }

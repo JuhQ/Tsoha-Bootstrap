@@ -10,28 +10,74 @@
     }
 
     public static function loginAction($tunnus, $salasana) {
-      $user = Kayttaja::authenticate($tunnus, $salasana);
-      if ($user) {
-        echo 'Tunnus löytyi, tehdään jotain?<br>';
-        $_SESSION['user'] = $user->id;
+      $detailsExist = isset($salasana, $salasana);
+
+      if (!$detailsExist) {
+        Redirect::to('/signup', array(
+          'message' => 'Tunnus ei ole validi! 😵 Tunnus tai salasana tyhjä.',
+          'error' => true
+        ));
+        return false;
       }
-      echo 'Jos login toimisi, tässä oltaisiin';
+
+      $user = Kayttaja::authenticate($tunnus, $salasana);
+
+      if ($user) {
+        $_SESSION['user'] = $user->id;
+
+        Redirect::to('/list', array(
+          'message' => 'Kirjauduttu sisälle samperi! 😎'
+        ));
+        return true;
+      }
+
+      Redirect::to('/signup', array(
+        'message' => 'Kirjautuminen ei onnistu! 😵',
+        'error' => true
+      ));
+      return false;
     }
 
-    public static function signupAction($tunnus, $salasana) {
+    public static function signupAction($tunnus, $salasana, $salasana2) {
+      $detailsExist = isset($salasana, $salasana, $salasana2);
+
+      if (!$detailsExist) {
+        Redirect::to('/signup', array(
+          'message' => 'Tunnus ei ole validi! 😵 Tunnus tai salasana tyhjä.',
+          'error' => true
+        ));
+        return false;
+      }
+
+      if (!$Kayttaja::validate_password($salasana, $salasana2)) {
+        Redirect::to('/signup', array(
+          'message' => 'Salasana ei ole validi! 😵 Salasanan pitää olla vähintään ' . Kayttaja::min_salasana() . ' merkkiä pitkä.',
+          'error' => true
+        ));
+        return false;
+      }
+
       if (!Kayttaja::validate_tunnus($tunnus)) {
-        Redirect::to('/signup', array('message' => 'Tunnus ei ole validi! 😵 Tunnuksen täytyy olla vähintään kolme (3) merkkiä.', 'error' => true));
+        Redirect::to('/signup', array(
+          'message' => 'Tunnus ei ole validi! 😵 Tunnuksen täytyy olla vähintään kolme (3) merkkiä.',
+          'error' => true
+        ));
         return false;
       }
 
       if (Kayttaja::getByTunnus($tunnus)) {
-        Redirect::to('/signup', array('message' => 'Käyttäjätunnus on jo varattu perhana! 😵', 'error' => true));
+        Redirect::to('/signup', array(
+          'message' => 'Käyttäjätunnus on jo varattu perhana! 😵',
+          'error' => true
+        ));
         return false;
       }
 
       $userid = Kayttaja::save($tunnus, $salasana);
       $_SESSION['user'] = $userid;
-      Redirect::to('/list', array('message' => 'Tunnuksesi on luotu onnistuneesti! Tervetuloa muistiinpanolistan jäseneksi, olet maailman paras ihminen! 😍💕'));
+      Redirect::to('/list', array(
+        'message' => 'Tunnuksesi on luotu onnistuneesti! Tervetuloa muistiinpanolistan jäseneksi, olet maailman paras ihminen! 😍💕'
+      ));
       return true;
     }
   }

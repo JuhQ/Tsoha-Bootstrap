@@ -49,6 +49,10 @@
     UserController::login();
   });
 
+  $routes->get('/logout', function() {
+    UserController::logout();
+  });
+
   $routes->get('/signup', function() {
     UserController::signup();
   });

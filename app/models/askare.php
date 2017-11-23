@@ -43,7 +43,7 @@ class Askare extends BaseModel {
     $query->execute(array('kayttaja_id' => $kayttaja_id));
     $rows = $query->fetchAll();
     if (!$rows) {
-      return false;
+      return array();
     }
 
     return array_map(function($row) {

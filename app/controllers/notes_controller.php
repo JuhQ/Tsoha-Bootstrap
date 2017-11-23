@@ -19,35 +19,64 @@ function cleanData($data) {
 }
 
 class NotesController extends BaseController {
+
+  private static function get_current_user_id() {
+    return self::get_user_logged_in()->id;
+  }
+
+  private static function check_login_status() {
+    $kayttaja = self::get_user_logged_in();
+    if ($kayttaja === false) {
+      Redirect::to('/', array(
+        'message' => 'Et ole kirjautunut sisään',
+        'error' => true
+      ));
+      return false;
+    }
+    return true;
+  }
+
   public static function list($luokka = false) {
-    // Kayttajan id toistaiseksi kovakoodattu
-    $kayttaja_id = 1;
+    if (!self::check_login_status()) {
+      return false;
+    }
+
     $content = array(
-      'list' => array_chunk(Askare::getAll($kayttaja_id), 4),
+      'list' => array_chunk(Askare::getAll(self::get_current_user_id()), 4),
       'title' => 'Listaus'
     );
     View::make('notes/list.html', $content);
   }
 
   public static function edit($id) {
-    // Kayttajan id toistaiseksi kovakoodattu
-    $kayttaja_id = 1;
-    View::make('notes/edit.html', array('item' => Askare::getById($kayttaja_id, $id)));
+    if (!self::check_login_status()) {
+      return false;
+    }
+
+    View::make('notes/edit.html', array('item' => Askare::getById(self::get_current_user_id(), $id)));
   }
 
   public static function viewSingle($id) {
-    // Kayttajan id toistaiseksi kovakoodattu
-    $kayttaja_id = 1;
-    View::make('notes/single-note.html', array('item' => Askare::getById($kayttaja_id, $id)));
+    if (!self::check_login_status()) {
+      return false;
+    }
+
+    View::make('notes/single-note.html', array('item' => Askare::getById(self::get_current_user_id(), $id)));
   }
 
   public static function create() {
+    if (!self::check_login_status()) {
+      return false;
+    }
+
     View::make('notes/add-note.html');
   }
 
   public static function save($data) {
-    // Kayttajan id toistaiseksi kovakoodattu
-    $kayttaja_id = 1;
+    if (!self::check_login_status()) {
+      return false;
+    }
+
     $data = cleanData($data);
 
     if (!isset($data['teksti']) || empty($data['teksti'])) {
@@ -59,16 +88,19 @@ class NotesController extends BaseController {
         'error' => true,
         'item' => $data
       ));
-      return;
+      return false;
     }
 
-    Askare::save($kayttaja_id, $data['teksti'], $data['tarkeysaste'], $data['luokat']);
+    Askare::save(self::get_current_user_id(), $data['teksti'], $data['tarkeysaste'], $data['luokat']);
     Redirect::to('/list', array('message' => 'Askare luotu'));
+    return true;
   }
 
   public static function saveEdit($id, $data) {
-    // Kayttajan id toistaiseksi kovakoodattu
-    $kayttaja_id = 1;
+    if (!self::check_login_status()) {
+      return false;
+    }
+
     $data = cleanData($data);
 
     if (!isset($id, $data['id'], $data['teksti']) || empty($id)  || empty($data['id']) || empty($data['teksti'])) {
@@ -76,20 +108,21 @@ class NotesController extends BaseController {
       return;
     }
 
-    Askare::update($id, $kayttaja_id, $data['teksti'], $data['tarkeysaste'], $data['luokat']);
+    Askare::update($id, self::get_current_user_id(), $data['teksti'], $data['tarkeysaste'], $data['luokat']);
     Redirect::to('/view/' . $data['id'], array('message' => 'Askaretta muokattu'));
   }
 
   public static function remove($id) {
-    // Kayttajan id toistaiseksi kovakoodattu
-    $kayttaja_id = 1;
+    if (!self::check_login_status()) {
+      return false;
+    }
 
     if (!isset($id) || empty($id)) {
       Redirect::to('/list', array('message' => 'Askareen id puuttuu, ei voida poistaa'));
       return;
     }
 
-    Askare::remove($kayttaja_id, $id);
+    Askare::remove(self::get_current_user_id(), $id);
     Redirect::to('/list', array('message' => 'Askare poistettu'));
   }
 }

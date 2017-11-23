@@ -20,6 +20,15 @@ Työn aiheena [muistilista](http://advancedkittenry.github.io/suunnittelu_ja_tyo
 ## Käyttöohjeet
 Työ sijaitsee osoitteessa [http://juhataur.users.cs.helsinki.fi/tsoha/](http://juhataur.users.cs.helsinki.fi/tsoha/).
 
+Pääset kirjautumaan sisälle tunnuksilla `tunnus1`/`salasana`
+
+Koska kyseessä on henkilökohtaiset muistiinpanot, järjestelmässä ei ole mitään admin näkymää eikä admin tunnuksia.
+Kirjaudu sisään (tai luo uusi tunnus) ja anna palaa! 📝
+
+
+### Puutteet/ongelmat
+ - Muistiinpanoissa on luokat (tagit) joita voi klikata, mutta näkymä ei vielä muutu.
+ - notes_controller luokka tekee turhan monta tietokantahakua käyttäjätauluun
 
 
 
@@ -28,7 +37,7 @@ Toimintoja:
 
 - [x] Rekisteröityminen
 - [x] Kirjautuminen
-- [ ] Käyttöohjeet
+- [x] Käyttöohjeet
 - [x] Askareen lisäys, muokkaus ja poisto
   - [x] lisäys
   - [x] muokkaus

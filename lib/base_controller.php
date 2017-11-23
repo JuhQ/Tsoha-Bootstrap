@@ -2,24 +2,19 @@
 
   class BaseController{
 
-    public static function get_user_logged_in(){
+    public static function get_user_logged_in() {
       // Toteuta kirjautuneen käyttäjän haku tähän
-      $kayttaja_id = 1;
-      $user = Kayttaja::getById($kayttaja_id);
-
-      // TODO: ehkä vaan
-      // return $user;
-
-      if ($user) {
-        return $user;
+      if (!isset($_SESSION['user'])) {
+        return false;
       }
 
-      return null;
+      return Kayttaja::getById($_SESSION['user']);
     }
 
-    public static function check_logged_in(){
+    public static function check_logged_in() {
       // Toteuta kirjautumisen tarkistus tähän.
       // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
+      return self::get_user_logged_in();
     }
 
   }

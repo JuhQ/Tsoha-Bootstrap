@@ -16,20 +16,22 @@
   {% if user_logged_in %}
     <div class="container">
       <p>
-        <a class="btn btn-primary btn-lg" href="{{base_path}}/list" role="button">Muistiinpanolistaan tästä</a>
+        <a class="btn btn-primary btn-lg" href="{{base_path}}/list" role="button">Siirry muistiinpanolistaan tästä</a>
       </p>
     </div>
     <hr>
   {% endif %}
 
-  <div class="container">
-    <p>
-      <a class="btn btn-primary btn-lg" href="{{base_path}}/login" role="button">Kirjaudu sisään</a>
-      <a class="btn btn-success btn-lg" href="{{base_path}}/signup" role="button">Luo tunnus</a>
-    </p>
-  </div>
+  {% if user_logged_in == false %}
+    <div class="container">
+      <p>
+        <a class="btn btn-primary btn-lg" href="{{base_path}}/login" role="button">Kirjaudu sisään</a>
+        <a class="btn btn-success btn-lg" href="{{base_path}}/signup" role="button">Luo tunnus</a>
+      </p>
+    </div>
+    <hr>
+  {% endif %}
 
-  <hr>
   <div class="container">
     <p>
       <a href="http://tsoha.github.io" class="btn btn-info">Tsohan materiaalit löytyy täältä <span class="glyphicon glyphicon-chevron-right"></span></a>

@@ -9,6 +9,14 @@
       View::make('users/signup.html', array('title' => 'Rekisteröidy'));
     }
 
+    public static function logout() {
+      session_destroy();
+
+      Redirect::to('/', array(
+        'message' => 'Kirjauduit ulos, tervetuloa takaisin! 🐴'
+      ));
+    }
+
     public static function loginAction($tunnus, $salasana) {
       $detailsExist = isset($salasana, $salasana);
 

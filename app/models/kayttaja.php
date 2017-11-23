@@ -41,7 +41,7 @@ class Kayttaja extends BaseModel {
   }
 
   public static function save($tunnus, $salasana) {
-    $salasana = password_hash($salasana);
+    $salasana = password_hash($salasana, PASSWORD_BCRYPT);
     $query = DB::connection()->prepare('INSERT INTO kayttaja (tunnus, salasana) VALUES (:tunnus, :salasana) RETURNING id');
     $query->execute(array('tunnus' => $tunnus, 'salasana' => $salasana));
     $row = $query->fetch();
@@ -52,5 +52,10 @@ class Kayttaja extends BaseModel {
   public static function authenticate($tunnus, $salasana) {
     $tunnus = Kayttaja::getByTunnus($tunnus);
     return password_verify($tunnus['salasana'], $salasana) ? $tunnus : false;
+  }
+
+  public static function validate_tunnus($tunnus) {
+    $minLength = 3;
+    return !empty($tunnus) && $tunnus !== null && strlen($tunnus) >= $minLength;
   }
 }

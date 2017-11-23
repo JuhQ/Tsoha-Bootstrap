@@ -19,7 +19,19 @@
     }
 
     public static function signupAction($tunnus, $salasana) {
-      Kayttaja::save($tunnus, $salasana);
-      echo 'Jos signup toimisi, tässä oltaisiin';
+      if (!Kayttaja::validate_tunnus($tunnus)) {
+        Redirect::to('/signup', array('message' => 'Tunnus ei ole validi! 😵 Tunnuksen täytyy olla vähintään kolme (3) merkkiä.', 'error' => true));
+        return false;
+      }
+
+      if (Kayttaja::getByTunnus($tunnus)) {
+        Redirect::to('/signup', array('message' => 'Käyttäjätunnus on jo varattu perhana! 😵', 'error' => true));
+        return false;
+      }
+
+      $userid = Kayttaja::save($tunnus, $salasana);
+      $_SESSION['user'] = $userid;
+      Redirect::to('/list', array('message' => 'Tunnuksesi on luotu onnistuneesti! Tervetuloa muistiinpanolistan jäseneksi, olet maailman paras ihminen! 😍💕'));
+      return true;
     }
   }

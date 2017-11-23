@@ -1,6 +1,10 @@
 
-INSERT INTO kayttaja (tunnus, salasana) VALUES ('tunnus1', 'salasana');
-INSERT INTO kayttaja (tunnus, salasana) VALUES ('tunnus2', 'salasana');
+/*
+  Salasana on hashattu password_hash funktiolla ja PASSWORD_BCRYPT flagilla
+  Hashin sisältämä salasana on: salasana
+*/
+INSERT INTO kayttaja (tunnus, salasana) VALUES ('tunnus1', '$2y$10$wLq/x9iI969DADB4ZHOLFergkomDoVE44iNurjFh.appVMEgu/XKe');
+INSERT INTO kayttaja (tunnus, salasana) VALUES ('tunnus2', '$2y$10$wLq/x9iI969DADB4ZHOLFergkomDoVE44iNurjFh.appVMEgu/XKe');
 
 INSERT INTO askare (teksti, tarkeysaste) VALUES ('hello', 1);
 INSERT INTO askare (teksti, tarkeysaste) VALUES ('hello again', 2);

@@ -56,19 +56,17 @@
   $routes->post('/login', function() {
     echo 'Kirjautuminen ei toimi vielä 😭';
     exit;
-    if (isset($_POST['tunnus'], $_POST['salasana'])) {
-      UserController::loginAction($_POST['tunnus'], $_POST['salasana']);
+    if (isset($_POST['username'], $_POST['password'])) {
+      UserController::loginAction($_POST['username'], $_POST['password']);
     } else {
       echo 'nope';
     }
   });
 
   $routes->post('/signup', function() {
-    echo 'Rekisteröinti ei toimi vielä 😭';
-    exit;
-    if (isset($_POST['tunnus'], $_POST['salasana'])) {
-      UserController::signupAction($_POST['tunnus'], $_POST['salasana']);
+    if (isset($_POST['username'], $_POST['password'], $_POST['password2']) && $_POST['password'] === $_POST['password2']) {
+      UserController::signupAction($_POST['username'], $_POST['password']);
     } else {
-      echo 'nope';
+      echo 'Rekisteröityminen ei nyt onnistunut perhana 😭';
     }
   });

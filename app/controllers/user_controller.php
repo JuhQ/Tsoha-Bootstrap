@@ -21,7 +21,7 @@
       $detailsExist = isset($salasana, $salasana);
 
       if (!$detailsExist) {
-        Redirect::to('/signup', array(
+        Redirect::to('/login', array(
           'message' => 'Tunnus ei ole validi! 😵 Tunnus tai salasana tyhjä.',
           'error' => true
         ));
@@ -39,7 +39,7 @@
         return true;
       }
 
-      Redirect::to('/signup', array(
+      Redirect::to('/login', array(
         'message' => 'Kirjautuminen ei onnistu! 😵',
         'error' => true
       ));

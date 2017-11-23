@@ -50,7 +50,15 @@ class Kayttaja extends BaseModel {
   }
 
   public static function authenticate($tunnus, $salasana) {
+    if (!isset($tunnus, $salasana) || empty($tunnus) || empty($salasana)) {
+      return false;
+    }
+
     $kayttaja = Kayttaja::getByTunnus($tunnus);
+    if (!$kayttaja) {
+      return false;
+    }
+
     return password_verify($salasana, $kayttaja->salasana) ? $kayttaja : false;
   }
 

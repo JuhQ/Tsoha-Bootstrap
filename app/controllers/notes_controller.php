@@ -80,8 +80,13 @@ class NotesController extends BaseController {
     $data = cleanData($data);
 
     if (!isset($data['teksti']) || empty($data['teksti'])) {
-      $data['luokatString'] = $data['luokat'];
-      $data['tarkeysaste'] = (int) $data['tarkeysaste'];
+      if (isset($data['luokat']) && !empty($data['luokat'])) {
+        $data['luokatString'] = $data['luokat'];
+      }
+
+      if (isset($data['tarkeysaste']) && !empty($data['tarkeysaste'])) {
+        $data['tarkeysaste'] = (int) $data['tarkeysaste'];
+      }
 
       Redirect::to('/add', array(
         'message' => 'Askareen lisäyksessä ongelma',

@@ -38,7 +38,8 @@ class Askare extends BaseModel {
       GROUP BY
         askare.id, kayttajaaskare.kayttaja_id
       ORDER BY
-        askare.tarkeysaste DESC
+        askare.tarkeysaste DESC,
+        askare.luontipaiva ASC
     ');
     $query->execute(array('kayttaja_id' => $kayttaja_id));
     $rows = $query->fetchAll();
@@ -69,7 +70,8 @@ class Askare extends BaseModel {
         askare.id = :id AND
         kayttajaaskare.kayttaja_id = :kayttaja_id
       GROUP BY
-        askare.id, kayttajaaskare.kayttaja_id
+        askare.id,
+        kayttajaaskare.kayttaja_id
       ');
     $query->execute(array('id' => $id, 'kayttaja_id' => $kayttaja_id));
     $row = $query->fetch();
@@ -89,7 +91,14 @@ class Askare extends BaseModel {
   }
 
   public static function save($kayttaja_id, $teksti, $tarkeysaste = 0, $luokat = array()) {
-    $query = DB::connection()->prepare('INSERT INTO askare (teksti, tarkeysaste) VALUES (:teksti, :tarkeysaste) RETURNING id');
+    $query = DB::connection()->prepare('
+      INSERT INTO
+        askare (teksti, tarkeysaste)
+      VALUES
+        (:teksti, :tarkeysaste)
+      RETURNING id
+    ');
+
     $query->execute(array('teksti' => $teksti, 'tarkeysaste' => self::setTarkeysAste($tarkeysaste)));
     $row = $query->fetch();
     $askare_id = $row['id'];

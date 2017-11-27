@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="luokka">
+  Nimi: {{luokka.nimi}}<br>
+  Väri: {{luokka.vari}} <span class="colorbox" style="background-color: {{luokka.vari}}"></span>
+</div>
+{% endblock %}

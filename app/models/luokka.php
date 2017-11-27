@@ -5,7 +5,14 @@ class Luokka extends BaseModel {
   public $id, $nimi, $vari;
 
   public static function getAll() {
-    $query = DB::connection()->prepare('SELECT id, nimi, vari FROM luokka ORDER BY nimi');
+    $query = DB::connection()->prepare('
+      SELECT
+        id, nimi, vari
+      FROM
+        luokka
+      ORDER BY nimi
+    ');
+
     $query->execute();
 
     return array_map(function($row) {
@@ -21,7 +28,8 @@ class Luokka extends BaseModel {
         luokka
       WHERE
         nimi = :nimi
-      ');
+    ');
+
     $query->execute(array('nimi' => $nimi));
     $row = $query->fetch();
 
@@ -33,8 +41,18 @@ class Luokka extends BaseModel {
   }
 
   public static function save($nimi, $vari) {
-    $query = DB::connection()->prepare('INSERT INTO luokka (nimi, vari) VALUES (:nimi, :vari) RETURNING id');
-    $query->execute(array('nimi' => $nimi, 'vari' => $vari));
+    $query = DB::connection()->prepare('
+      INSERT INTO
+        luokka (nimi, vari)
+      VALUES
+        (:nimi, :vari)
+      RETURNING id
+    ');
+
+    $query->execute(array(
+      'nimi' => $nimi,
+      'vari' => $vari
+    ));
     $row = $query->fetch();
 
     return $row['id'];

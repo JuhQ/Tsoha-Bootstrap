@@ -64,3 +64,13 @@
   $routes->post('/signup', function() {
     UserController::signupAction($_POST['username'], $_POST['password'], $_POST['password2']);
   });
+
+
+  // luokat
+  $routes->get('/luokat', function() {
+    LuokkaController::list();
+  });
+
+  $routes->get('/luokat/:nimi', function($nimi) {
+    LuokkaController::viewSingle($nimi);
+  });

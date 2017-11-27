@@ -14,7 +14,10 @@ class KayttajaAskare extends BaseModel {
         askare_id = :askare_id AND
         kayttaja_id = :kayttaja_id
       ');
-    $query->execute(array('kayttaja_id' => $kayttaja_id, 'askare_id' => $askare_id));
+    $query->execute(array(
+      'kayttaja_id' => $kayttaja_id,
+      'askare_id' => $askare_id
+    ));
     $row = $query->fetch();
     if (!$row) {
       return false;
@@ -25,15 +28,34 @@ class KayttajaAskare extends BaseModel {
 
   // TODO: Tarviiko tämän returnaa mitään
   public static function save($kayttaja_id, $askare_id) {
-    $query = DB::connection()->prepare('INSERT INTO kayttajaaskare (askare_id, kayttaja_id) VALUES (:askare_id, :kayttaja_id)');
-    $query->execute(array('kayttaja_id' => $kayttaja_id, 'askare_id' => $askare_id));
+    $query = DB::connection()->prepare('
+      INSERT INTO
+        kayttajaaskare (askare_id, kayttaja_id)
+      VALUES
+        (:askare_id, :kayttaja_id)
+    ');
+
+    $query->execute(array(
+      'kayttaja_id' => $kayttaja_id,
+      'askare_id' => $askare_id
+    ));
     $row = $query->fetch();
 
     return $row;
   }
 
   public static function remove($kayttaja_id, $askare_id) {
-    $query = DB::connection()->prepare('DELETE FROM kayttajaaskare WHERE askare_id = :askare_id AND kayttaja_id = :kayttaja_id');
-    $query->execute(array('kayttaja_id' => $kayttaja_id, 'askare_id' => $askare_id));
+    $query = DB::connection()->prepare('
+      DELETE FROM
+        kayttajaaskare
+      WHERE
+        askare_id = :askare_id AND
+        kayttaja_id = :kayttaja_id
+    ');
+
+    $query->execute(array(
+      'kayttaja_id' => $kayttaja_id,
+      'askare_id' => $askare_id
+    ));
   }
 }

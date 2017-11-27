@@ -126,6 +126,15 @@ input#toggle-perkele:checked ~ div {
   padding: 6px 32px;
 }
 
+.colorbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  position: relative;
+  top: 5px;
+  margin-left: 6px;
+  display: inline-block;
+}
 
 
 

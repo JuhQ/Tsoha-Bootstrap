@@ -42,8 +42,18 @@ class Kayttaja extends BaseModel {
 
   public static function save($tunnus, $salasana) {
     $salasana = password_hash($salasana, PASSWORD_BCRYPT);
-    $query = DB::connection()->prepare('INSERT INTO kayttaja (tunnus, salasana) VALUES (:tunnus, :salasana) RETURNING id');
-    $query->execute(array('tunnus' => $tunnus, 'salasana' => $salasana));
+    $query = DB::connection()->prepare('
+      INSERT INTO
+        kayttaja (tunnus, salasana)
+      VALUES
+        (:tunnus, :salasana)
+      RETURNING id
+    ');
+
+    $query->execute(array(
+      'tunnus' => $tunnus,
+      'salasana' => $salasana
+    ));
     $row = $query->fetch();
 
     return $row['id'];

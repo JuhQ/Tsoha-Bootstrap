@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for luokka in luokat %}
+  <div class="luokka">
+    <a href="{{base_path}}/luokat/{{luokka.nimi}}">Nimi: {{luokka.nimi}}</a><br>
+  </div>
+  {% endfor %}
+{% endblock %}

@@ -17,7 +17,8 @@
 
       if (!isset($_SESSION['user'])) {
         Redirect::to('/login', array(
-          'message' => 'Kirjaudu ensin sisään!'
+          'message' => 'Et ole vielä kirjautunut sisälle.',
+          'error' => true
         ));
         return false;
       }

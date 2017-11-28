@@ -1,5 +1,9 @@
 <?php
 
+  function check_logged_in() {
+    BaseController::check_logged_in();
+  }
+
   $routes->get('/', function() {
     HomeController::index();
   });
@@ -10,36 +14,36 @@
 
 
   // Notes
-  $routes->get('/list', function() {
+  $routes->get('/list', 'check_logged_in', function() {
     NotesController::list();
   });
 
   // TODO: deprekoi tai lisää filtteröintitoiminnallisuus
-  $routes->get('/list/:luokka', function($luokka) {
+  $routes->get('/list/:luokka', 'check_logged_in', function($luokka) {
     NotesController::list($luokka);
   });
 
-  $routes->get('/add', function() {
+  $routes->get('/add', 'check_logged_in', function() {
     NotesController::create();
   });
 
-  $routes->post('/create', function() {
+  $routes->post('/create', 'check_logged_in', function() {
     NotesController::save($_POST);
   });
 
-  $routes->get('/edit/:id', function($id) {
+  $routes->get('/edit/:id', 'check_logged_in', function($id) {
     NotesController::edit($id);
   });
 
-  $routes->post('/edit/:id', function($id) {
+  $routes->post('/edit/:id', 'check_logged_in', function($id) {
     NotesController::saveEdit($id, $_POST);
   });
 
-  $routes->get('/remove/:id', function($id) {
+  $routes->get('/remove/:id', 'check_logged_in', function($id) {
     NotesController::remove($id);
   });
 
-  $routes->get('/view/:id', function($id) {
+  $routes->get('/view/:id', 'check_logged_in', function($id) {
     NotesController::viewSingle($id);
   });
 

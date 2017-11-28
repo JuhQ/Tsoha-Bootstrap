@@ -41,6 +41,7 @@ class Askare extends BaseModel {
         askare.tarkeysaste DESC,
         askare.luontipaiva ASC
     ');
+
     $query->execute(array('kayttaja_id' => $kayttaja_id));
     $rows = $query->fetchAll();
     if (!$rows) {
@@ -72,7 +73,8 @@ class Askare extends BaseModel {
       GROUP BY
         askare.id,
         kayttajaaskare.kayttaja_id
-      ');
+    ');
+
     $query->execute(array('id' => $id, 'kayttaja_id' => $kayttaja_id));
     $row = $query->fetch();
     if (!$row) {
@@ -122,6 +124,7 @@ class Askare extends BaseModel {
       WHERE
         id = :id
     ');
+
     $query->execute(array(
       'teksti' => $teksti,
       'tarkeysaste' => self::setTarkeysAste($tarkeysaste),

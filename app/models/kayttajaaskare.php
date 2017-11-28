@@ -13,7 +13,8 @@ class KayttajaAskare extends BaseModel {
       WHERE
         askare_id = :askare_id AND
         kayttaja_id = :kayttaja_id
-      ');
+    ');
+
     $query->execute(array(
       'kayttaja_id' => $kayttaja_id,
       'askare_id' => $askare_id

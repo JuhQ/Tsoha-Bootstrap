@@ -13,8 +13,12 @@ class AskareLuokka extends BaseModel {
       WHERE
         askare_id = :askare_id AND
         luokka_id = :luokka_id
-      ');
-    $query->execute(array('askare_id' => $askare_id, 'luokka_id' => $luokka_id));
+    ');
+
+    $query->execute(array(
+      'askare_id' => $askare_id,
+      'luokka_id' => $luokka_id
+    ));
     $row = $query->fetch();
     if (!$row) {
       return false;
@@ -61,6 +65,9 @@ class AskareLuokka extends BaseModel {
       WHERE
         askare_id = :askare_id
     ');
-    $query->execute(array('askare_id' => $askare_id));
+
+    $query->execute(array(
+      'askare_id' => $askare_id
+    ));
   }
 }

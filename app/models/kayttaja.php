@@ -12,7 +12,8 @@ class Kayttaja extends BaseModel {
         kayttaja
       WHERE
         id = :id
-      ');
+    ');
+
     $query->execute(array('id' => $id));
     $row = $query->fetch();
     if (!$row) {
@@ -30,7 +31,8 @@ class Kayttaja extends BaseModel {
         kayttaja
       WHERE
         tunnus = :tunnus
-      ');
+    ');
+
     $query->execute(array('tunnus' => $tunnus));
     $row = $query->fetch();
     if (!$row) {

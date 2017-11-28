@@ -127,13 +127,11 @@ input#toggle-perkele:checked ~ div {
 }
 
 .colorbox {
-  width: 20px;
-  height: 20px;
+  width: 200px;
+  height: 200px;
   border: 1px solid #000;
   position: relative;
   top: 5px;
-  margin-left: 6px;
-  display: inline-block;
 }
 
 

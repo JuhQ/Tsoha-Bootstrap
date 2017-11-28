@@ -2,7 +2,8 @@
 {% block content %}
 
 <div class="luokka">
-  Nimi: {{luokka.nimi}}<br>
-  Väri: {{luokka.vari}} <span class="colorbox" style="background-color: {{luokka.vari}}"></span>
+  Nimi: <strong>{{luokka.nimi}}</strong><br>
+  Väri: {{luokka.vari}}
+  <div class="colorbox" style="background-color: {{luokka.vari}}"></div>
 </div>
 {% endblock %}

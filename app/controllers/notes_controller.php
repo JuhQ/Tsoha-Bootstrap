@@ -4,7 +4,7 @@ function cleanData($data) {
   // Sallitaan max 10 luokkaa per askare
   $maxMaaraLuokkia = 10;
   if (isset($data['luokat']) && is_string($data['luokat'])) {
-    $luokat = explode(',', $data['luokat']);
+    $luokat = explode(',', trim($data['luokat']));
     $data['luokat'] = implode(',', array_slice($luokat, 0, $maxMaaraLuokkia));
   }
 
@@ -12,8 +12,12 @@ function cleanData($data) {
     $data['luokat'] = array();
   }
 
-  if (empty($data['tarkeysaste'])) {
+  if (empty($data['tarkeysaste']) || !is_numeric($data['tarkeysaste'])) {
     $data['tarkeysaste'] = 0;
+  }
+
+  if (isset($data['teksti'])) {
+    $data['teksti'] = trim($data['teksti']);
   }
 
   return $data;

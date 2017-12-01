@@ -194,7 +194,13 @@ class Askare extends BaseModel {
     AskareLuokka::removeByAskareId($askare_id);
     KayttajaAskare::remove($kayttaja_id, $askare_id);
 
-    $query = DB::connection()->prepare('DELETE FROM askare WHERE id = :id');
+    $query = DB::connection()->prepare('
+      DELETE FROM
+        askare
+      WHERE
+        id = :id
+    ');
+
     $query->execute(array('id' => $askare_id));
   }
 }

@@ -84,7 +84,7 @@
       $userid = Kayttaja::save($tunnus, $salasana);
       $_SESSION['user'] = $userid;
       Redirect::to('/list', array(
-        'message' => 'Tunnuksesi on luotu onnistuneesti! Tervetuloa muistiinpanolistan jäseneksi, olet maailman paras ihminen! 😍💕'
+        'message' => 'Tunnuksesi on luotu onnistuneesti! Tervetuloa askarelistan jäseneksi, olet maailman paras ihminen! 😍💕'
       ));
       return true;
     }

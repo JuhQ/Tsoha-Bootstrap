@@ -50,8 +50,8 @@ $(document).ready(function(){
     }
 
     function onMouseMove(e) {
-      cursor.x = e.clientX;
-      cursor.y = e.clientY;
+      cursor.x = e.pageX;
+      cursor.y = e.pageY;
 
       if ($emoji.hasClass('active')) {
         addParticle(cursor.x, cursor.y, possibleEmoji);

@@ -135,6 +135,20 @@ input#toggle-perkele:checked ~ div {
   top: 5px;
 }
 
+.form-group.error {
+  background: #fff555;
+  padding: 20px;
+  border-radius: 6px;
+}
+.form-group.error:after {
+  display: block;
+  content: 'Pakollinen kenttä!';
+  background: #c32020;
+  color: #fff;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+}
 
 
 

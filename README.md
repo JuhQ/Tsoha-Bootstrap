@@ -8,8 +8,8 @@ Yleisiä linkkejä:
 Linkit staattisiin sivuihin
 * [Etusivu](staattiset-tiedostot/Tietokantasovellus.htm)
 * [Listaus](staattiset-tiedostot/Tietokantasovellus-listaus.htm)
-* [Yksittäisen muistiinpanon näkymä](staattiset-tiedostot/Tietokantasovellus-yksittainen.htm)
-* [Muistiinpanon muokkaus](staattiset-tiedostot/Tietokantasovellus-muokkaus.htm)
+* [Yksittäisen askareen näkymä](staattiset-tiedostot/Tietokantasovellus-yksittainen.htm)
+* [Askareen muokkaus](staattiset-tiedostot/Tietokantasovellus-muokkaus.htm)
 
 ## Työn aihe
 
@@ -22,13 +22,13 @@ Työ sijaitsee osoitteessa [http://juhataur.users.cs.helsinki.fi/tsoha/](http://
 
 Pääset kirjautumaan sisälle tunnuksilla `tunnus1`/`salasana`
 
-Koska kyseessä on henkilökohtaiset muistiinpanot, järjestelmässä ei ole mitään admin näkymää eikä admin tunnuksia.
+Koska kyseessä on henkilökohtaiset askareet, järjestelmässä ei ole mitään admin näkymää eikä admin tunnuksia.
 Kirjaudu sisään (tai luo uusi tunnus) ja anna palaa! 📝
 
 
 ### Puutteet/ongelmat
- - Muistiinpanoissa on luokat (tagit) joita voi klikata, mutta näkymä ei vielä muutu.
- - notes_controller luokka tekee turhan monta tietokantahakua käyttäjätauluun
+ - Askareissa on luokat (tagit) joita voi klikata, mutta näkymä ei vielä muutu.
+ - askare_controller luokka tekee turhan monta tietokantahakua käyttäjätauluun
 
 
 

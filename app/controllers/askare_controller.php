@@ -105,7 +105,8 @@ class AskareController extends BaseController {
       self::setSaveErrorData($data);
 
       Redirect::to('/add', array(
-        'message' => 'Askareen lisäyksessä ongelma',
+        'highlight' => 'teksti',
+        'message' => '⚠️ Askareen lisäyksessä ongelma, et voi tallentaa tyhjää tekstiä! Askareellasi täytyy olla jotain sisältöä, kuten myös elämällä. Life is like a box of askares.',
         'error' => true,
         'item' => $data
       ));
@@ -125,8 +126,21 @@ class AskareController extends BaseController {
 
     $data = cleanData($data);
 
-    if (!isset($id, $data['id'], $data['teksti']) || empty($id) || empty($data['id']) || empty($data['teksti'])) {
-      Redirect::to('/list', array('message' => 'Askareen muokkauksessa ongelma', 'error' => true));
+    if (!isset($id, $data['id']) || empty($id) || empty($data['id'])) {
+      Redirect::to('/list', array(
+        'highlight' => 'id',
+        'message' => 'Askareen muokkauksessa ongelma, jostain kumman syystä ID puuttuu! Käytithän virallista(tm) askarelomaketta?',
+        'error' => true
+      ));
+      return false;
+    }
+
+    if (!isset($data['teksti']) || empty($data['teksti'])) {
+      Redirect::to('/list', array(
+        'highlight' => 'teksti',
+        'message' => 'Askareen muokkauksessa ongelma, et voi tallentaa tyhjää tekstiä! Askareellasi täytyy olla jotain sisältöä, kuten myös elämällä. Life is like a box of askares.',
+        'error' => true
+      ));
       return false;
     }
 

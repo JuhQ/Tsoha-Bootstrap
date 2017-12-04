@@ -18,7 +18,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   var emoji = document.getElementById('emoji');
   var $emoji = $(emoji);
-  $('.note')
+  $('.askare')
     .on('mouseenter', function() {
       $emoji.addClass('active')
     })

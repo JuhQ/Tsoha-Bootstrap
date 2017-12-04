@@ -13,7 +13,7 @@
   });
 
 
-  // Notes
+  // Askareet
   $routes->get('/list', 'check_logged_in', function() {
     AskareController::list();
   });

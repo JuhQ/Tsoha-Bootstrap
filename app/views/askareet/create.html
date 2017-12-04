@@ -1,11 +1,11 @@
 {% block content %}
 <input type="checkbox" id="toggle-perkele">
 <label for="toggle-perkele" class="magic">Lisää uusi askare</label>
-<div class="row create-note-container">
+<div class="row create-askare-container">
   <div class="col-md-3">
-    <div class="create-note">
+    <div class="create-askare">
       <form method="post" action="{{base_path}}/create">
-        {% include 'notes/note-handling-form.html' %}
+        {% include 'askareet/askare-handling-form.html' %}
       </form>
     </div>
   </div>

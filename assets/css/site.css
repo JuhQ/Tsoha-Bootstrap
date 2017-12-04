@@ -9,7 +9,7 @@
   margin: 0px auto;
 }
 
-.note {
+.askare {
   transition: all 0.3s ease-in-out;
   cursor: none;
   padding: 20px;
@@ -21,13 +21,13 @@
   position: relative;
 }
 
-.note:hover {
+.askare:hover {
   transform: rotate(-3deg);
   box-shadow: 0px 0px 10px rgba(132, 132, 132, 0.5);
   // background: linear-gradient(57deg, rgba(255, 0, 200, 0.18), transparent 60%), linear-gradient(-20deg, rgba(255, 243, 0, 0.3), transparent 60%), linear-gradient(181deg, rgba(0, 255, 67, 0.18), transparent 60%);
 }
 
-.note:hover:after {
+.askare:hover:after {
   width: 200%;
   height: 200%;
   position: absolute;
@@ -41,7 +41,7 @@
   pointer-events: none;
 }
 
-.single-note .note:hover:after {
+.single-askare .askare:hover:after {
   animation: none;
   -webkit-animation: none;
 }
@@ -55,46 +55,46 @@
   100% {transform: rotate(360deg);}
 }
 
-.note .lead a {
+.askare .lead a {
   color: #333;
 }
 
-.note .tools {
+.askare .tools {
   transition: all 0.3s;
   opacity: 0;
 }
 
-.note .tools a,
-.note .tools a:active  {
+.askare .tools a,
+.askare .tools a:active  {
   background: transparent;
   border: none;
 }
 
-.note .tools a.btn-success {
+.askare .tools a.btn-success {
   color: #5cb85c;
 }
 
-.note .tools a.btn-success:hover {
+.askare .tools a.btn-success:hover {
   color: #449d44;
 }
 
-.note .tools a.btn-danger {
+.askare .tools a.btn-danger {
   color: #d9534f;
 }
 
-.note .tools a.btn-danger:hover {
+.askare .tools a.btn-danger:hover {
   color: #c9302c;
 }
 
-.note:hover .tools {
+.askare:hover .tools {
   opacity: 1;
 }
 
-.create-note-container {
+.create-askare-container {
   display: none;
 }
 
-.add-note .create-note-container {
+.add-askare .create-askare-container {
   display: inherit;
 }
 
@@ -122,7 +122,7 @@ input#toggle-perkele:checked ~ div {
   display: block;
 }
 
-.create-note button {
+.create-askare button {
   margin-right: 10px;
   padding: 6px 32px;
 }

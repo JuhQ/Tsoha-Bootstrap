@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% include 'notes/create.html' %}
+{% include 'askareet/create.html' %}
 
 <h2 class="lead">
   Lista askareista
@@ -13,7 +13,7 @@
 
     {% for item in chunk %}
       <div class="col-md-3">
-        {% include 'notes/note.html' %}
+        {% include 'askareet/askare.html' %}
       </div>
     {% endfor %}
 

@@ -51,7 +51,7 @@ class AskareController extends BaseController {
       'title' => 'Listaus'
     );
 
-    View::make('notes/list.html', $content);
+    View::make('askareet/list.html', $content);
   }
 
   public static function edit($id) {
@@ -59,7 +59,7 @@ class AskareController extends BaseController {
       return false;
     }
 
-    View::make('notes/edit.html', array(
+    View::make('askareet/edit.html', array(
       'item' => Askare::getById(self::get_current_user_id(), $id)
     ));
   }
@@ -69,7 +69,7 @@ class AskareController extends BaseController {
       return false;
     }
 
-    View::make('notes/single-note.html', array(
+    View::make('askareet/single-askare.html', array(
       'item' => Askare::getById(self::get_current_user_id(), $id)
     ));
   }
@@ -79,7 +79,7 @@ class AskareController extends BaseController {
       return false;
     }
 
-    View::make('notes/add-note.html');
+    View::make('askareet/add-askare.html');
   }
 
   private static function setSaveErrorData($data) {

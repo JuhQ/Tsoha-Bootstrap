@@ -50,23 +50,23 @@
 
   // users
   $routes->get('/login', function() {
-    UserController::login();
+    KayttajaController::login();
   });
 
   $routes->get('/logout', function() {
-    UserController::logout();
+    KayttajaController::logout();
   });
 
   $routes->get('/signup', function() {
-    UserController::signup();
+    KayttajaController::signup();
   });
 
   $routes->post('/login', function() {
-    UserController::loginAction($_POST['username'], $_POST['password']);
+    KayttajaController::loginAction($_POST['username'], $_POST['password']);
   });
 
   $routes->post('/signup', function() {
-    UserController::signupAction($_POST['username'], $_POST['password'], $_POST['password2']);
+    KayttajaController::signupAction($_POST['username'], $_POST['password'], $_POST['password2']);
   });
 
 

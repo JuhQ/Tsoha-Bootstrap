@@ -1,6 +1,6 @@
 <?php
 
-  class UserController extends BaseController {
+  class KayttajaController extends BaseController {
     public static function login() {
       View::make('users/login.html', array('title' => 'Luo tunnus'));
     }

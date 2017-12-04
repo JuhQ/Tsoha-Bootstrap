@@ -15,36 +15,36 @@
 
   // Notes
   $routes->get('/list', 'check_logged_in', function() {
-    NotesController::list();
+    AskareController::list();
   });
 
   // TODO: deprekoi tai lisää filtteröintitoiminnallisuus
   $routes->get('/list/:luokka', 'check_logged_in', function($luokka) {
-    NotesController::list($luokka);
+    AskareController::list($luokka);
   });
 
   $routes->get('/add', 'check_logged_in', function() {
-    NotesController::create();
+    AskareController::create();
   });
 
   $routes->post('/create', 'check_logged_in', function() {
-    NotesController::save($_POST);
+    AskareController::save($_POST);
   });
 
   $routes->get('/edit/:id', 'check_logged_in', function($id) {
-    NotesController::edit($id);
+    AskareController::edit($id);
   });
 
   $routes->post('/edit/:id', 'check_logged_in', function($id) {
-    NotesController::saveEdit($id, $_POST);
+    AskareController::saveEdit($id, $_POST);
   });
 
   $routes->get('/remove/:id', 'check_logged_in', function($id) {
-    NotesController::remove($id);
+    AskareController::remove($id);
   });
 
   $routes->get('/view/:id', 'check_logged_in', function($id) {
-    NotesController::viewSingle($id);
+    AskareController::viewSingle($id);
   });
 
 

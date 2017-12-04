@@ -23,7 +23,7 @@ function cleanData($data) {
   return $data;
 }
 
-class NotesController extends BaseController {
+class AskareController extends BaseController {
 
   private static function get_current_user_id() {
     return self::get_user_logged_in()->id;

@@ -75,18 +75,27 @@
     LuokkaController::list();
   });
 
+  // ugh tää routteri :D
+  $routes->get('/create_luokka', function() {
+    LuokkaController::viewCreate();
+  });
+
+  $routes->post('/luokat/create', function() {
+    LuokkaController::create($_POST['nimi'], $_POST['vari']);
+  });
+
   $routes->get('/luokat/:nimi', function($nimi) {
     LuokkaController::viewSingle($nimi);
   });
 
-  $routes->get('/luokat/:nimi/edit', function($nimi) {
+  $routes->get('/luokat/:nimi/edit', 'check_logged_in', function($nimi) {
     LuokkaController::edit($nimi);
   });
 
-  $routes->post('/luokat/:id/edit', function($id) {
+  $routes->post('/luokat/:id/edit', 'check_logged_in', function($id) {
     LuokkaController::saveEdit($id, $_POST['nimi'], $_POST['vari']);
   });
 
-  $routes->get('/luokat/:nimi/remove', function($nimi) {
+  $routes->get('/luokat/:nimi/remove', 'check_logged_in', function($nimi) {
     LuokkaController::remove($nimi);
   });

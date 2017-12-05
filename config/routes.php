@@ -78,3 +78,15 @@
   $routes->get('/luokat/:nimi', function($nimi) {
     LuokkaController::viewSingle($nimi);
   });
+
+  $routes->get('/luokat/:nimi/edit', function($nimi) {
+    LuokkaController::edit($nimi);
+  });
+
+  $routes->post('/luokat/:id/edit', function($id) {
+    LuokkaController::saveEdit($id, $_POST['nimi'], $_POST['vari']);
+  });
+
+  $routes->get('/luokat/:nimi/remove', function($nimi) {
+    LuokkaController::remove($nimi);
+  });

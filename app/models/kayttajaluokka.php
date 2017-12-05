@@ -60,4 +60,17 @@ class KayttajaLuokka extends BaseModel {
       'luokka_id' => $luokka_id
     ));
   }
+
+  public static function removeByLuokkaId($luokka_id) {
+    $query = DB::connection()->prepare('
+      DELETE FROM
+        kayttajaluokka
+      WHERE
+        luokka_id = :luokka_id
+    ');
+
+    $query->execute(array(
+      'luokka_id' => $luokka_id
+    ));
+  }
 }

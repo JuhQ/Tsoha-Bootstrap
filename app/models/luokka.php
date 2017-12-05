@@ -40,6 +40,26 @@ class Luokka extends BaseModel {
     return new Luokka($row);
   }
 
+  public static function getById($id) {
+    $query = DB::connection()->prepare('
+      SELECT
+        id, nimi, vari
+      FROM
+        luokka
+      WHERE
+        id = :id
+    ');
+
+    $query->execute(array('id' => $id));
+    $row = $query->fetch();
+
+    if (!$row) {
+      return false;
+    }
+
+    return new Luokka($row);
+  }
+
   public static function save($nimi, $vari) {
     $query = DB::connection()->prepare('
       INSERT INTO
@@ -56,5 +76,49 @@ class Luokka extends BaseModel {
     $row = $query->fetch();
 
     return $row['id'];
+  }
+
+  public static function edit($id, $nimi, $vari) {
+    $query = DB::connection()->prepare('
+      UPDATE
+        luokka
+      SET
+        nimi = :nimi,
+        vari = :vari
+      WHERE
+        id = :id
+    ');
+
+    $query->execute(array(
+      'id' => $id,
+      'nimi' => $nimi,
+      'vari' => $vari
+    ));
+    $row = $query->fetch();
+
+    return true;
+  }
+
+  public static function removeByNimi($nimi) {
+    $luokka = Luokka::getByNimi($nimi);
+    if (!$luokka) {
+      return false;
+    }
+
+    AskareLuokka::removeByLuokkaId($luokka->id);
+    KayttajaLuokka::removeByLuokkaId($luokka->id);
+
+    $query = DB::connection()->prepare('
+      DELETE FROM
+        luokka
+      WHERE
+        id = :id
+    ');
+
+    $query->execute(array(
+      'id' => $luokka->id
+    ));
+
+    return true;
   }
 }

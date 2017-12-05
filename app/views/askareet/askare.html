@@ -3,7 +3,7 @@
   {% if item.luokat | length > 0 %}
     <div class="categories">
       {% for luokka in item.luokat %}
-        <a href="{{base_path}}/list/{{luokka.nimi}}"><mark style="background: {{luokka.vari}};">{{luokka.nimi}}</mark></a>
+        <a href="{{base_path}}/luokat/{{luokka.nimi}}"><mark style="background: {{luokka.vari}};">{{luokka.nimi}}</mark></a>
       {% endfor %}
     </div>
   {% endif %}

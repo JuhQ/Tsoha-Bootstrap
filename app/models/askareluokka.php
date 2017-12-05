@@ -70,4 +70,17 @@ class AskareLuokka extends BaseModel {
       'askare_id' => $askare_id
     ));
   }
+
+  public static function removeByLuokkaId($luokka_id) {
+    $query = DB::connection()->prepare('
+      DELETE FROM
+        askareluokka
+      WHERE
+        luokka_id = :luokka_id
+    ');
+
+    $query->execute(array(
+      'luokka_id' => $luokka_id
+    ));
+  }
 }
